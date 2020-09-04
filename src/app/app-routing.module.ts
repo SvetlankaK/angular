@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'welcome', component: WelcomeComponent},
-  {path: '', redirectTo: 'login'},//todo не работает
+  // {path: '', redirectTo: 'login'},не работает
   // otherwise redirect to home
   {path: '**', redirectTo: 'login'}
 ];
