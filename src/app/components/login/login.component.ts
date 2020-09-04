@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router, ActivatedRoute, RouterModule} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from "../../service/user.service";
 
@@ -12,9 +12,9 @@ import {UserService} from "../../service/user.service";
 
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  loading = false;
   submitted = false;
   invalidData = false;
+  id: string;
 
 
   constructor(
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       const password = this.loginForm.get('password').value;
       let user = this.service.getByLogin(login);
       if (user != null && user.password == password) {
-        this.router.navigate(["welcome"]);
+        this.router.navigate(['welcome', user.login]);
       } else {
         this.invalidData = true;
       }

@@ -4,12 +4,14 @@ import {LoginComponent} from "./components/login/login.component";
 import {RegistrationComponent} from "./components/registration/registration.component";
 import {WelcomeComponent} from "./components/welcome/welcome.component";
 import {BrowserModule} from "@angular/platform-browser";
+import {UsersComponent} from "./components/users/users.component";
 
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
-  {path: 'welcome', component: WelcomeComponent},
+  {path: 'welcome/:login', component: WelcomeComponent},
+  {path: 'users', component: UsersComponent},
   // {path: '', redirectTo: 'login'},не работает
   // otherwise redirect to home
   {path: '**', redirectTo: 'login'}

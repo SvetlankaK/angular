@@ -1,1 +1,25 @@
-<p>users works!</p>
+<div class="card">
+  <h5>Vertical with Fixed Viewport</h5>
+  <p-table [value]="users" [scrollable]="true" scrollHeight="200px">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name,Surname</th>
+        <th>Role</th>
+        <th>Email</th>
+        <th>Salary</th>
+        <th>Birthday</th>
+        <th>Edit</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>{{user.name}}, {{user.surname}}</td>
+        <td>{{user.role}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.salary}}</td>
+        <td>{{user.dateOfBirth}}</td>
+        <td>link</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

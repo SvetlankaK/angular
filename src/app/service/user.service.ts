@@ -13,6 +13,7 @@ export class UserService {
     email: 'cat1717@mail.ru',
     name: 'Анна',
     surname: 'Иванова', dateOfBirth: "11.11.1998",
+    role: 'user',
     salary: 100
   }, {
     id: 2,
@@ -22,6 +23,7 @@ export class UserService {
     name: 'Максим',
     surname: 'Вешалкин',
     dateOfBirth: "11.05.1995",
+    role: 'user',
     salary: 100
   }, {
     id: 3,
@@ -29,8 +31,9 @@ export class UserService {
     password: 'gfhjkm',
     email: 'svetlanka@gmail.com',
     name: 'Света',
-    surname: 'Кветк0',
+    surname: 'Кветко',
     dateOfBirth: '04.06.2000',
+    role: 'user',
     salary: 100
   },
     {
@@ -41,7 +44,28 @@ export class UserService {
       name: 'Максим',
       surname: 'Ворошилов',
       dateOfBirth: '17.02.1998',
-      salary: 2000
+      salary: 2000,
+      role: 'admin'
+    }, {
+      id: 5,
+      login: 'gerald',
+      password: 'gddsssm',
+      email: 'fiiklo@gmail.com',
+      name: 'Грегорий',
+      surname: 'Навицкий',
+      dateOfBirth: '17.05.1992',
+      role: 'user',
+      salary: 1222
+    }, {
+      id: 6,
+      login: 'hello',
+      password: 'world',
+      email: 'sggOllas@gmail.com',
+      name: 'Варя',
+      surname: 'Колесникович',
+      dateOfBirth: '11.01.1990',
+      role: 'user',
+      salary: 1999
     }];
 
   constructor() {

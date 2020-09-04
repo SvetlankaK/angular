@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {User} from "../../domain/user";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-users',
@@ -7,12 +9,15 @@ import {Component, OnInit} from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() {
+  constructor(private service: UserService) {
   }
 
+  users: User[];
   commonTemplate = true;
 
   ngOnInit(): void {
+    this.users = this.service.findAll();
+
   }
 
 }

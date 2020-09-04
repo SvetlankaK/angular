@@ -8,7 +8,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RegistrationComponent } from './components/registration/registration.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { UsersComponent } from './components/users/users.component';
+import {TableModule} from 'primeng/table';
 import {RouterModule} from "@angular/router";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import {RouterModule} from "@angular/router";
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    TableModule,
+    RouterModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
