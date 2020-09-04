@@ -1,3 +1,20 @@
-
-<div>he<div>
-<app-login></app-login>
+<div *ngIf="commonTemplate" class="container">
+  <header class="header">
+    <h1 class="logo">Useless application</h1>
+    <ul class="menu-main">
+      <li><a routerLink="/welcome" class="current">Main</a></li>
+      <li><a routerLink="/users">Users</a></li>
+      <li><a routerLink="/logout" class="logoutLink">Logout</a></li>
+    </ul>
+  </header>
+  <div class="content-body">
+    <main class="content">
+    </main>
+    <nav class="sidenav"></nav>
+    <aside class="ads"></aside>
+  </div>
+  <footer class="footer">
+    <div class="footerInfo">Made by Sveta Kvetko, 2020</div>
+  </footer>
+</div>
+<router-outlet></router-outlet>
