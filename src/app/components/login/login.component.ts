@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute, RouterModule} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from "../../service/user.service";
+import {ToastrService} from "ngx-toastr";
 
 
 @Component({
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private service: UserService) {
+    private service: UserService, private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -29,6 +30,10 @@ export class LoginComponent implements OnInit {
       login: ['', Validators.required],
       password: ['', Validators.required]
     });
+  }
+
+  get fval() {
+    return this.loginForm.controls;
   }
 
   onSubmit() {

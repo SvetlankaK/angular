@@ -11,6 +11,9 @@ import { UsersComponent } from './components/users/users.component';
 import {TableModule} from 'primeng/table';
 import {RouterModule} from "@angular/router";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import {CalendarModule} from 'primeng/calendar';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     TableModule,
     RouterModule,
-    BrowserAnimationsModule
+    CalendarModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

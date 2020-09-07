@@ -1,7 +1,7 @@
 <div class="card">
   <h5>Vertical with Fixed Viewport</h5>
-  <p-table [value]="users" [scrollable]="true" scrollHeight="200px">
-    <ng-template pTemplate="header">
+  <p-table [value]="users" [scrollable]="true" scrollHeight="200px"  styleClass="p-datatable-responsive-demo">
+    <ng-template pTemplate="header" >
       <tr>
         <th>Name,Surname</th>
         <th>Role</th>
@@ -12,7 +12,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-user>
-      <tr>
+      <tr >
         <td>{{user.name}}, {{user.surname}}</td>
         <td>{{user.role}}</td>
         <td>{{user.email}}</td>

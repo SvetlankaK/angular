@@ -1,1 +1,117 @@
-<p>registration works!</p>
+<h1 class="logo">Register new account</h1>
+<div class="form">
+  <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()" id="contactform">
+
+
+    <div class="contact"><label for="name">Name</label>
+      <input type="text" formControlName="name" id="name" tabindex="1"
+             [ngClass]="{ 'is-invalid': submitted && fval.name.errors }"
+             placeholder="Enter your name here"/>
+      <div *ngIf="submitted && fval.name.errors">
+        <div *ngIf="fval.name.errors.required" class="error">Name is required</div>
+        <div *ngIf="fval.name.errors.minlength" class="error">Name must be at least 6 characters</div>
+      </div>
+    </div>
+
+    <div class="contact"><label for="surname">Surname</label>
+      <input type="text" formControlName="name" id="surname"
+             [ngClass]="{ 'is-invalid': submitted && fval.surname.errors }"
+             placeholder="Enter surname here"/>
+      <div *ngIf="submitted && fval.surname.errors">
+        <div *ngIf="fval.surname.errors.required" class="error">Surname is required</div>
+        <div *ngIf="fval.surname.errors.minlength" class="error">Surname must be at least 6 characters</div>
+      </div>
+    </div>
+
+    <div class="contact"><label for="email">Email</label>
+      <input type="text" formControlName="email" id="email" tabindex="2"
+             [ngClass]="{ 'is-invalid': submitted && fval.email.errors }"
+             placeholder="Enter email here"/>
+      <div *ngIf="submitted && fval.email.errors">
+        <div *ngIf="fval.email.errors.required" class="error">Email is required</div>
+        <div *ngIf="fval.email.errors.email" class="error">Enter valid email address</div>
+      </div>
+    </div>
+
+    <div class="contact"><label for="dateOfBirth">Date Of Birth</label>
+      <p-calendar [(ngModel)]="dateOfBirth" inputStyleClass="form-control" required
+                  [inline]="true"></p-calendar>
+      <input type="text" formControlName="dateOfBirth" id="dateOfBirth" tabindex="2"
+             [ngClass]="{ 'is-invalid': submitted && fval.dateOfBirth.errors }"
+             placeholder="Enter your date of birth"/>
+      <div *ngIf="submitted && fval.dateOfBirth.errors">
+        <div *ngIf="fval.dateOfBirth.errors.required" class="error">Date Of Birth is required</div>
+
+      </div>
+    </div>
+
+
+    <fieldset>
+      <legend>
+        Login data:
+      </legend>
+      <div class="contact"><label for="login">Login</label>
+
+        <input type="text" formControlName="login" id="login" tabindex="2"
+               [ngClass]="{ 'is-invalid': submitted && fval.login.errors }"
+               placeholder="Enter login here"/>
+        <div *ngIf="submitted && fval.login.errors">
+          <div *ngIf="fval.login.errors.required" class="error">Login is required</div>
+          <div *ngIf="fval.login.errors.minlength" class="error">Login must be at least 6 characters</div>
+        </div>
+      </div>
+
+      <div class="contact"><label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" tabindex="2"
+               [ngClass]="{ 'is-invalid': submitted && fval.password.errors }"
+               placeholder="Enter login here"/>
+        <div *ngIf="submitted && fval.password.errors">
+          <div *ngIf="fval.password.errors.required" class="error">password is required</div>
+          <div *ngIf="fval.password.errors.minlength" class="error">password must be at least 6 characters</div>
+        </div>
+      </div>
+
+    </fieldset>
+    <button pButton type="button" class="p-button-raised p-button-rounded buttons">Register</button>
+    <a routerLink="/login" class="link-button buttons">Back to login</a>
+
+    <input type="hidden" formControlName="salary" value="100"/>
+    <input type="hidden" formControlName="id" value="{{ generateId() }}"/>
+  </form>
+</div>
+
+
+<!--    <fieldset>-->
+<!--      <label>Birthday</label>-->
+<!--      <label class="month">-->
+<!--        <select class="select-style" name="BirthMonth">-->
+<!--          <option value="">Month</option>-->
+<!--          <option  value="01">January</option>-->
+<!--          <option value="02">February</option>-->
+<!--          <option value="03" >March</option>-->
+<!--          <option value="04">April</option>-->
+<!--          <option value="05">May</option>-->
+<!--          <option value="06">June</option>-->
+<!--          <option value="07">July</option>-->
+<!--          <option value="08">August</option>-->
+<!--          <option value="09">September</option>-->
+<!--          <option value="10">October</option>-->
+<!--          <option value="11">November</option>-->
+<!--          <option value="12" >December</option>-->
+<!--      </label>-->
+<!--      </select>-->
+<!--      <label>Day<input class="birthday" maxlength="2" name="BirthDay"  placeholder="Day" required=""></label>-->
+<!--      <label>Year <input class="birthyear" maxlength="4" name="BirthYear" placeholder="Year" required=""></label>-->
+<!--    </fieldset>-->
+
+<!--    <select class="select-style gender" name="gender">-->
+<!--      <option value="select">i am..</option>-->
+<!--      <option value="m">Male</option>-->
+<!--      <option value="f">Female</option>-->
+<!--      <option value="others">Other</option>-->
+<!--    </select><br><br>-->
+
+
+
+
+

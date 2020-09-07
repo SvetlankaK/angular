@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {User} from "../domain/user";
 
 @Injectable({
@@ -99,4 +99,9 @@ export class UserService {
     let ind = this.users.indexOf(user);
     delete this.users[ind];
   }
+
+  generateId() {
+    return this.users.length + 1;
+  }
+
 }

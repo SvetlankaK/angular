@@ -2,11 +2,20 @@
   <h1>Please, login</h1>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="input">
+
       <div class="blockinput">
-        <input type="text" formControlName="login" placeholder="Login" autocomplete="off"/>
+        <input type="text" formControlName="login" placeholder="Login" autocomplete="off" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && fval.login.errors }"/>
+        <div *ngIf="submitted && fval.login.errors">
+          <div *ngIf="fval.login.errors.required" class="error">Login is required</div>
+        </div>
       </div>
       <div class="blockinput">
-        <input type="password" formControlName="password" placeholder="Password"/>
+        <input type="password" formControlName="password" placeholder="Password" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && fval.password.errors }"/>
+        <div *ngIf="submitted && fval.password.errors" >
+          <div *ngIf="fval.password.errors.required" class="error">Password is required</div>
+        </div>
       </div>
     </div>
     <button type="submit">
