@@ -9,6 +9,8 @@
   </header>
   <div class="content-body">
     <main class="content">
+      <app-welcome *ngIf="welcomePage"></app-welcome>
+      <app-users *ngIf="usersPage"></app-users>
     </main>
     <nav class="sidenav"></nav>
     <aside class="ads"></aside>

@@ -8,5 +8,7 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'angular';
-  commonTemplate;
+  commonTemplate: boolean;
+  usersPage: boolean;
+  welcomePage: boolean;
 }
