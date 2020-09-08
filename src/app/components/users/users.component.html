@@ -1,7 +1,8 @@
 <div class="card">
   <h5>Users</h5>
-  <p-table [value]="users" [scrollable]="true" scrollHeight="350px" dataKey="id" editMode="row" styleClass="p-datatable-responsive-demo">
-    <ng-template pTemplate="header" >
+  <p-table [value]="users" [scrollable]="true" scrollHeight="350px" dataKey="id" editMode="row"
+           styleClass="p-datatable-responsive-demo">
+    <ng-template pTemplate="header">
       <tr>
         <th>Name,Surname</th>
         <th>Role</th>
@@ -65,12 +66,15 @@
           </p-cellEditor>
         </td>
         <td style="text-align:center">
-          <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info" (click)="onRowEditInit(rowData)"></button>
-          <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success" style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
-          <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger" (click)="onRowEditCancel(rowData, ri)"></button>
-          <button  pButton type="button"  icon="pi pi-times" class="ui-button-danger delete-button" style="color:red" (click)="delete(rowData)" ></button>
+          <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info"
+                  (click)="onRowEditInit(rowData)"></button>
+          <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success"
+                  style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+          <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger"
+                  (click)="onRowEditCancel(rowData, ri)"></button>
+          <button pButton type="button" icon="pi pi-times" class="ui-button-danger delete-button"
+                  (click)="delete(rowData)"></button>
         </td>
-
       </tr>
     </ng-template>
   </p-table>

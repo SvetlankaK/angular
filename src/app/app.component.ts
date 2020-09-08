@@ -1,6 +1,5 @@
 import {Component, Injectable} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {tokenReference} from "@angular/compiler";
 
 
 @Component({
@@ -11,14 +10,16 @@ import {tokenReference} from "@angular/compiler";
 @Injectable()
 export class AppComponent {
   title = 'angular';
-  commonTemplate: boolean;
-  usersPage: boolean;
-  welcomePage: boolean;
+  public commonTemplate: boolean;
+  public usersPage: boolean;
+  public welcomePage: boolean;
 
   constructor(private router: Router) {
 
   }
-//todo так тоже не робит бля
+
+//todo так тоже не робит
+
   ngOnInit(): void {
     if (this.router.url == "users") {
       this.commonTemplate = true;

@@ -31,7 +31,7 @@ export class UsersComponent implements OnInit {
 
   onRowEditSave(user: User) {
     if (user.salary > 0) {
-      //todo мои попытки в удаление/измнение инфы, но если их раскомментить, она не только не меняется, но и юай ломаетс
+      //todo мои попытки в удаление/измнение инфы, но если их раскомментить, она не только не меняется, но и юай ломается
 
       // this.service.update(user, user.id);
       // let ind = this.users.indexOf(user);
@@ -46,6 +46,7 @@ export class UsersComponent implements OnInit {
     delete this.clonedUsers[user.id];
   }
 
+//todo не понимаю, удаляется ли тут юзер, например. ибо там странно на юае ломается эта строчка. возможно так потому что оно удалило, но нормально отрисовать не может
   delete(user: User) {
     this.service.delete(user.id);
     let ind = this.users.indexOf(user);

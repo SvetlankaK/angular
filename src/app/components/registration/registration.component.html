@@ -32,19 +32,12 @@
         <div *ngIf="fval.email.errors.email" class="error">Enter valid email address</div>
       </div>
     </div>
-    <!--todo я пока закомментила(ту строку, что через 1), шоб не вылезало за пределы формы, что оно и делает-->
+    <!--todo я пока закомментила строку с календарем шоб не вылезало за пределы формы, что оно и делает. поэтому форма немного поплыла, но если бы я смогла изменять
+    размер календаря, это бы исправилось-->
+
     <div class="contact"><label for="dateOfBirth">Date Of Birth</label>
       <!--      <p-calendar formControlName="dateOfBirth" styleClass="driverLicExpCal form-control" id="dateOfBirth" [inline]="true"></p-calendar>-->
     </div>
-    <!--todo это как бы не всралось. просто я уже не уверена, что смогу использовать ебаный календарь, так что пусть будет поле по старинке-->
-
-<!--          <input type="text" formControlName="dateOfBirth" tabindex="2"-->
-    <!--             [ngClass]="{ 'is-invalid': submitted && fval.dateOfBirth.errors }"-->
-    <!--             placeholder="Enter your date of birth"/>-->
-    <!--      <div *ngIf="submitted && fval.dateOfBirth.errors">-->
-    <!--        <div *ngIf="fval.dateOfBirth.errors.required" class="error">Date Of Birth is required</div>-->
-
-    <!--      </div>-->
 
 
     <fieldset>

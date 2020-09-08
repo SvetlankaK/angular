@@ -12,8 +12,10 @@ const routes: Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'welcome/:login', component: WelcomeComponent},
   {path: 'users', component: UsersComponent},
-  // {path: '', redirectTo: 'login'},не работает
-  // otherwise redirect to home
+  // todo не работает ни один редирект, например то, что ниже:
+
+  //  {path: '', redirectTo: 'login'},не работает
+
   {path: '**', redirectTo: 'login'}
 ];
 export const routing = RouterModule.forRoot(routes);
@@ -25,9 +27,3 @@ export const routing = RouterModule.forRoot(routes);
 export class AppRoutingModule {
 }
 
-// <div *ngFor="let user of users">{{user.login}}</div>
-// login : <input [(ngModel)]="newUserLogin"> <button (click)="addUser()">add</button>
-//   </div>
-// <div>Name: {{name}}</div>
-// <button (click)="name = 'bye world'">change name</button>
-// <div>Input: <input [(ngModel)]="name"></div>

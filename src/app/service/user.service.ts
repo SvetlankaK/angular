@@ -103,5 +103,4 @@ export class UserService {
   generateId() {
     return this.users.length + 1;
   }
-
 }
