@@ -21,7 +21,7 @@
     <button type="submit">
       Login
     </button>
-    <div *ngIf="invalidData" class="error"> Bad credentials</div>
+    <div *ngIf="invalidData&& (!fval.password.errors && !fval.login.errors)" class="error error-cred"> Bad credentials</div>
     <p class="regCase">
       Don’t have an account?
     </p>

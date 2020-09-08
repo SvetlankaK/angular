@@ -32,18 +32,19 @@
         <div *ngIf="fval.email.errors.email" class="error">Enter valid email address</div>
       </div>
     </div>
-
+    <!--todo я пока закомментила(ту строку, что через 1), шоб не вылезало за пределы формы, что оно и делает-->
     <div class="contact"><label for="dateOfBirth">Date Of Birth</label>
-      <p-calendar [(ngModel)]="dateOfBirth" inputStyleClass="form-control" required
-                  [inline]="true"></p-calendar>
-      <input type="text" formControlName="dateOfBirth" id="dateOfBirth" tabindex="2"
-             [ngClass]="{ 'is-invalid': submitted && fval.dateOfBirth.errors }"
-             placeholder="Enter your date of birth"/>
-      <div *ngIf="submitted && fval.dateOfBirth.errors">
-        <div *ngIf="fval.dateOfBirth.errors.required" class="error">Date Of Birth is required</div>
-
-      </div>
+      <!--      <p-calendar formControlName="dateOfBirth" styleClass="driverLicExpCal form-control" id="dateOfBirth" [inline]="true"></p-calendar>-->
     </div>
+    <!--todo это как бы не всралось. просто я уже не уверена, что смогу использовать ебаный календарь, так что пусть будет поле по старинке-->
+
+<!--          <input type="text" formControlName="dateOfBirth" tabindex="2"-->
+    <!--             [ngClass]="{ 'is-invalid': submitted && fval.dateOfBirth.errors }"-->
+    <!--             placeholder="Enter your date of birth"/>-->
+    <!--      <div *ngIf="submitted && fval.dateOfBirth.errors">-->
+    <!--        <div *ngIf="fval.dateOfBirth.errors.required" class="error">Date Of Birth is required</div>-->
+
+    <!--      </div>-->
 
 
     <fieldset>
@@ -66,51 +67,19 @@
                [ngClass]="{ 'is-invalid': submitted && fval.password.errors }"
                placeholder="Enter login here"/>
         <div *ngIf="submitted && fval.password.errors">
-          <div *ngIf="fval.password.errors.required" class="error">password is required</div>
-          <div *ngIf="fval.password.errors.minlength" class="error">password must be at least 6 characters</div>
+          <div *ngIf="fval.password.errors.required" class="error">Password is required</div>
+          <div *ngIf="fval.password.errors.minlength" class="error">Password must be at least 6 characters</div>
         </div>
       </div>
 
     </fieldset>
-    <button pButton type="button" class="p-button-raised p-button-rounded buttons">Register</button>
+    <button type="submit" class="p-button-raised p-button-rounded buttons">Register now</button>
     <a routerLink="/login" class="link-button buttons">Back to login</a>
 
     <input type="hidden" formControlName="salary" value="100"/>
     <input type="hidden" formControlName="id" value="{{ generateId() }}"/>
   </form>
 </div>
-
-
-<!--    <fieldset>-->
-<!--      <label>Birthday</label>-->
-<!--      <label class="month">-->
-<!--        <select class="select-style" name="BirthMonth">-->
-<!--          <option value="">Month</option>-->
-<!--          <option  value="01">January</option>-->
-<!--          <option value="02">February</option>-->
-<!--          <option value="03" >March</option>-->
-<!--          <option value="04">April</option>-->
-<!--          <option value="05">May</option>-->
-<!--          <option value="06">June</option>-->
-<!--          <option value="07">July</option>-->
-<!--          <option value="08">August</option>-->
-<!--          <option value="09">September</option>-->
-<!--          <option value="10">October</option>-->
-<!--          <option value="11">November</option>-->
-<!--          <option value="12" >December</option>-->
-<!--      </label>-->
-<!--      </select>-->
-<!--      <label>Day<input class="birthday" maxlength="2" name="BirthDay"  placeholder="Day" required=""></label>-->
-<!--      <label>Year <input class="birthyear" maxlength="4" name="BirthYear" placeholder="Year" required=""></label>-->
-<!--    </fieldset>-->
-
-<!--    <select class="select-style gender" name="gender">-->
-<!--      <option value="select">i am..</option>-->
-<!--      <option value="m">Male</option>-->
-<!--      <option value="f">Female</option>-->
-<!--      <option value="others">Other</option>-->
-<!--    </select><br><br>-->
-
 
 
 

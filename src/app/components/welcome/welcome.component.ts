@@ -19,6 +19,11 @@ export class WelcomeComponent implements OnInit {
   currentUser: User;
   login: string;
 
+//todo вот главная проблема. я не понимаю как сделать переменную commonTemplate = true не прямо в присваивании её в appComponent,
+// а со временем, когда надо будет. я пыталась :
+// 1)менять в инит методе двух компанентов, где я хочу юзать тот темплейт, как здесь
+// 2)меняя в appComponent init методе, в попытке вытощить роут юрл и меняя эти булевы там
+//
 
   ngOnInit(): void {
     this.appComponent.commonTemplate = true;

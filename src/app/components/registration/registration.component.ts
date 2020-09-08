@@ -45,14 +45,11 @@ export class RegistrationComponent implements OnInit {
   onFormSubmit() {
     this.submitted = true;
     if (this.registerForm.invalid) {
-      this.toastr.error();
-      //надо что-то передать сюда, наверное, чтоб выводило, но не ебу шо
+      return;
     }
     this.loading = true;
     this.userService.register(this.registerForm.value);
-    //добавить проверку мож какую
     this.router.navigate(['/login']);
-
   }
 
   generateId() {

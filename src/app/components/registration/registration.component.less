@@ -7,7 +7,7 @@ h1 {
 
 .form {
   width: 50%;
-  height: 55%;
+  height: 65%;
   margin: 30px auto;
   -webkit-border-radius: 10px;
   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -47,24 +47,6 @@ h1 {
   background-color: rgba(255, 255, 255, 1);
 }
 
-.form .select-style {
-  -webkit-appearance: button;
-  -webkit-border-radius: 2px;
-  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  -webkit-padding-end: 20px;
-  -webkit-padding-start: 2px;
-  -webkit-user-select: none;
-  background: rgba(0, 0, 0, 0) url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_keyboard_arrow_down_48px-16.png") no-repeat scroll center right;
-  border: 0px solid #FFF;
-  color: #555;
-  font-size: inherit;
-  margin: 0;
-  overflow: hidden;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 
 .buttons {
   margin-top: 10px;
@@ -94,8 +76,8 @@ button {
   -webkit-box-shadow: 0 1px 3px #999;
   box-shadow: 0 1px 3px #999;
   text-shadow: 0 -1px 1px #222;
-  left: 25%;
-
+  left: 20%;
+  outline:none;
 }
 
 button:hover {
@@ -103,7 +85,7 @@ button:hover {
 }
 
 .link-button {
-  left: 45%;
+  left: 40%;
   vertical-align: top;
   color: #bbb;
   text-align: center;
@@ -124,5 +106,18 @@ legend {
   color: rgba(255, 0, 0, 0.7);
   font-family: "Segoe Print";
   display: inline-block;
+  font-size: 16px;
 }
+//todo вот две попытки изменить вид календаря. от классов ангуляра, которые пыталась переопределить до встроенного мной класс.
+// ничего из этого не робит. инлайн стайлы в p-calendar тоже пыталась
+::ng-deep .ui-timepicker .ui-widget-header {
+  width: 70px;
+  height: 70px;
 
+}
+.driverLicExpCal {
+  position: absolute;
+  left: 210px;
+  width: 70px;
+  height: 70px;
+}

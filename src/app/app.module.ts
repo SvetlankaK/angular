@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import {CalendarModule} from 'primeng/calendar';
 import {ButtonModule} from 'primeng/button';
+import {TabViewModule} from "primeng/tabview";
+import {InputTextModule} from "primeng/inputtext";
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import {ButtonModule} from 'primeng/button';
     CalendarModule,
     BrowserAnimationsModule,
     ButtonModule,
-    ToastrModule.forRoot()
+    TabViewModule,
+    ToastrModule.forRoot(),
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]

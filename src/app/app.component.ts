@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Injectable} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {tokenReference} from "@angular/compiler";
 
@@ -8,6 +8,7 @@ import {tokenReference} from "@angular/compiler";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
+@Injectable()
 export class AppComponent {
   title = 'angular';
   commonTemplate: boolean;
