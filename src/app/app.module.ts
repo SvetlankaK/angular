@@ -16,6 +16,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {ButtonModule} from 'primeng/button';
 import {TabViewModule} from "primeng/tabview";
 import {InputTextModule} from "primeng/inputtext";
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {InputTextModule} from "primeng/inputtext";
     LoginComponent,
     RegistrationComponent,
     WelcomeComponent,
-    UsersComponent
+    UsersComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

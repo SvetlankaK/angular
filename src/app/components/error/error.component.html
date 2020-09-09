@@ -1,0 +1,24 @@
+<body>
+<div class="error-wall load-error">
+  <div class="error-container">
+    <div *ngIf="forbidden" class="forbidden">
+      <h1>Oh no...</h1>
+      <h3>You do not have permission to view this page:(</h3>
+      <h4>Error 403</h4>
+    </div>
+    <div *ngIf="notFound" class="not-found">
+      <h1>Oh no...</h1>
+      <h3>We don't have such a page:(</h3>
+      <h4>Error 404</h4>
+    </div>
+    <div *ngIf="unauthorized" class="unauthorized">
+      <h1>Oh no...</h1>
+      <h3>You can not see this page without log in :(</h3>
+      <h4>Error 401</h4>
+    </div>
+    <div class="button-bar">
+      <a routerLink="/welcome" class="button">Go to welcome page</a>
+    </div>
+  </div>
+</div>
+</body>
