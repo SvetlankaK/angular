@@ -9,8 +9,8 @@
   </header>
   <div class="content-body">
     <main class="content">
-      <app-welcome *ngIf="welcomePage"></app-welcome>
-      <app-users *ngIf="usersPage"></app-users>
+      <app-welcome *ngIf="welcomePage"><router-outlet></router-outlet></app-welcome>
+      <app-users *ngIf="usersPage"><router-outlet></router-outlet></app-users>
     </main>
     <nav class="sidenav"></nav>
     <aside class="ads"></aside>
@@ -19,4 +19,4 @@
     <div class="footerInfo">Made by Sveta Kvetko, 2020</div>
   </footer>
 </div>
-<router-outlet></router-outlet>
+<router-outlet *ngIf="!commonTemplate"></router-outlet>

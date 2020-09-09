@@ -2,6 +2,7 @@ import {Component, Injectable} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 @Injectable()
 export class AppComponent {
   title = 'angular';
-  public commonTemplate: boolean;
+  public commonTemplate: boolean=true;
   public usersPage: boolean;
   public welcomePage: boolean;
 
@@ -19,6 +20,7 @@ export class AppComponent {
   }
 
 //todo так тоже не робит
+
 
   ngOnInit(): void {
     if (this.router.url == "users") {

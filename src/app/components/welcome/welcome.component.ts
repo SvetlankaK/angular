@@ -3,6 +3,7 @@ import {User} from "../../domain/user";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../service/user.service";
 import {AppComponent} from "../../app.component";
+import {TemplateService} from "../../service/template.service";
 
 @Component({
   selector: 'app-welcome',
