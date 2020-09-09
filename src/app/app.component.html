@@ -3,7 +3,7 @@
     <h1 class="logo">Useless application</h1>
     <ul class="menu-main">
       <li><a routerLink="/welcome" class="current">Main</a></li>
-      <li><a routerLink="/users">Users</a></li>
+      <li *ngIf="admin"><a routerLink="/users">Users</a></li>
       <li><a routerLink="/logout" class="logoutLink">Logout</a></li>
     </ul>
   </header>

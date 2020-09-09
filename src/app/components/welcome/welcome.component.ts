@@ -3,7 +3,7 @@ import {User} from "../../domain/user";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../service/user.service";
 import {AppComponent} from "../../app.component";
-import {TemplateService} from "../../service/template.service";
+
 
 @Component({
   selector: 'app-welcome',
@@ -33,6 +33,9 @@ export class WelcomeComponent implements OnInit {
     const userLogin = this.route.snapshot.paramMap.get('login');
     let user = this.service.getByLogin(userLogin);
     this.login = userLogin;
+    if (user.role == "admin") {
+      this.appComponent.admin = true;
+    }
   }
 
 

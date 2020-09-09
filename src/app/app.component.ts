@@ -2,7 +2,6 @@ import {Component, Injectable} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,6 +13,7 @@ export class AppComponent {
   public commonTemplate: boolean;
   public usersPage: boolean;
   public welcomePage: boolean;
+  public admin: boolean;
 
   constructor(private router: Router) {
 
