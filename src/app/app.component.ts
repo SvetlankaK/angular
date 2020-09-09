@@ -11,7 +11,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 @Injectable()
 export class AppComponent {
   title = 'angular';
-  public commonTemplate: boolean=true;
+  public commonTemplate: boolean;
   public usersPage: boolean;
   public welcomePage: boolean;
 
