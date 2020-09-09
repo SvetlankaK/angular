@@ -12,10 +12,6 @@ const routes: Routes = [
   {path: 'registration', component: RegistrationComponent},
   {path: 'welcome/:login', component: WelcomeComponent},
   {path: 'users', component: UsersComponent},
-  // todo не работает ни один редирект, например то, что ниже:
-
-  //  {path: '', redirectTo: 'login'},не работает
-
   {path: '**', redirectTo: 'login'}
 ];
 export const routing = RouterModule.forRoot(routes);
