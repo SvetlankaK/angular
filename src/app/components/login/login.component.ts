@@ -3,6 +3,7 @@ import {Router, ActivatedRoute, RouterModule} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from "../../service/user.service";
 import {ToastrService} from "ngx-toastr";
+import {AppComponent} from "../../app.component";
 
 
 @Component({

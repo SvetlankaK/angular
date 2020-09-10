@@ -1,5 +1,7 @@
-import {Component, Injectable} from '@angular/core';
+import {Component, EventEmitter, Injectable} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
+import {Subscription} from "rxjs";
+import {SharedService} from "./service/shared-service.service";
 
 
 @Component({
@@ -7,6 +9,8 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
+
+
 @Injectable()
 export class AppComponent {
   title = 'angular';
@@ -15,21 +19,20 @@ export class AppComponent {
   public welcomePage: boolean;
   public admin: boolean;
 
-  constructor(private router: Router) {
-
+  constructor(private route: ActivatedRoute, private sharedService: SharedService) {
+    sharedService.onMainEvent.subscribe(
+      (commonTemplate) => {
+        this.commonTemplate = commonTemplate;
+      });
   }
 
-//todo так тоже не робит
-
+  public initTemplate() {
+    this.commonTemplate = true;
+    this.welcomePage = true;
+  }
 
   ngOnInit(): void {
-    if (this.router.url == "users") {
-      this.commonTemplate = true;
-      this.welcomePage = true;
-    }
-    if (this.router.url.startsWith("welcome")) {
-      this.commonTemplate = true;
-      this.welcomePage = true;
-    }
+    this.welcomePage = true;
   }
+
 }
