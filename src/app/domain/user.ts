@@ -75,6 +75,7 @@ export class User {
   role:string;
 
 
+
   constructor(id: number, name: string, login: string, password: string, surname: string, dateOfBirth: string, email: string, salary: number, role:string) {
   }
 

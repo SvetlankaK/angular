@@ -15,9 +15,11 @@
                [ngClass]="{ 'is-invalid': submitted && fval.password.errors }"/>
         <div *ngIf="submitted && fval.password.errors">
           <div *ngIf="fval.password.errors.required" class="error">Password is required</div>
+
         </div>
       </div>
     </div>
+    <!--[disabled]="form.invalid"-->
     <button type="submit">
       Login
     </button>

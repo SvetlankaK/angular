@@ -8,15 +8,16 @@ import {UsersComponent} from "./components/users/users.component";
 import {ErrorComponent} from "./components/error/error.component";
 import {AppComponent} from "./app.component";
 
-const commonTemplateRoutes: Routes = [
-  {path: 'welcome/:login', component:AppComponent},
-  {path: 'users', component: UsersComponent},
-];
+// const commonTemplateRoutes: Routes = [
+//   {path: 'welcome/:login', component:AppComponent},
+//   {path: 'users', component: UsersComponent},
+// ];
+//это я пыталась делать, чтоб были типа дочерние для велкома или юзера, чтоб хоть как отрисовать, но хуй там плавал
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
-  {path: 'welcome/:login', component: WelcomeComponent, children: commonTemplateRoutes},
+  {path: 'welcome', component: WelcomeComponent},
   {path: 'users', component: UsersComponent},
   {path: 'error/:type', component: ErrorComponent},
   {path: '**', redirectTo: 'login'}

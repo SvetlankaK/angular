@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from "../../domain/user";
 import {UserService} from "../../service/user.service";
 import {AppComponent} from "../../app.component";
+import {SharedService} from "../../service/shared.service";
 
 @Component({
   selector: 'app-users',
@@ -11,7 +12,7 @@ import {AppComponent} from "../../app.component";
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private service: UserService, private appComponent: AppComponent) {
+  constructor(private service: UserService, private sService: SharedService) {
   }
 
   users: User[];
@@ -19,8 +20,8 @@ export class UsersComponent implements OnInit {
   clonedUsers: { [s: string]: User; } = {};
 
   ngOnInit(): void {
-    this.appComponent.commonTemplate = true;
-    this.appComponent.usersPage = true;
+    this.sService.onAppCommonTemplate.emit(true);
+    this.sService.onAppUsersTemplate.emit(true);
     this.users = this.service.findAll();
     this.users2 = this.service.findAll();
   }
@@ -31,12 +32,9 @@ export class UsersComponent implements OnInit {
 
   onRowEditSave(user: User) {
     if (user.salary > 0) {
-      //todo мои попытки в удаление/измнение инфы, но если их раскомментить, она не только не меняется, но и юай ломается
-
-      // this.service.update(user, user.id);
-      // let ind = this.users.indexOf(user);
-      // delete this.users[ind];
-      // this.users.push(user);
+      let ind = this.users.indexOf(user);
+      delete this.users[ind];
+      this.users.push(user);
       delete this.clonedUsers[user.id];
     }
   }
@@ -46,10 +44,10 @@ export class UsersComponent implements OnInit {
     delete this.clonedUsers[user.id];
   }
 
-//todo не понимаю, удаляется ли тут юзер, например. ибо там странно на юае ломается эта строчка. возможно так потому что оно удалило, но нормально отрисовать не может
   delete(user: User) {
     this.service.delete(user.id);
     let ind = this.users.indexOf(user);
     delete this.users[ind];
+
   }
 }

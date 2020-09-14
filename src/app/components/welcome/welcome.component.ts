@@ -3,8 +3,7 @@ import {User} from "../../domain/user";
 import {ActivatedRoute} from "@angular/router";
 import {UserService} from "../../service/user.service";
 import {AppComponent} from "../../app.component";
-import {SharedService} from "../../service/shared-service.service";
-
+import {SharedService} from "../../service/shared.service";
 
 
 @Component({
@@ -23,16 +22,15 @@ export class WelcomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.sService.onMainEvent.emit(true);
-    this.appComponent.commonTemplate = true;
-    this.appComponent.usersPage = true;
-    const userLogin = this.route.snapshot.paramMap.get('login');
-    let user = this.service.getByLogin(userLogin);
-    this.login = userLogin;
-    // if (user.role == "admin") {
-    //   this.appComponent.admin = true;
-    // }
+    this.sService.onAppCommonTemplate.emit(true);
+    this.sService.onAppWelcomeTemplate.emit(true);
+    if (localStorage.getItem("loggedIn") === "true") {
+      let user = JSON.parse(localStorage.getItem("user"));
+      this.login = user.userLogin;
+      if (user.role == "admin") {
+        this.sService.onAppAdminView.emit(true);
+      }
+    }
   }
-
 
 }

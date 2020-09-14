@@ -19,6 +19,7 @@ import {InputTextModule} from "primeng/inputtext";
 import { ErrorComponent } from './components/error/error.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

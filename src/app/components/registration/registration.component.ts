@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../../service/user.service";
 import {ToastrService} from 'ngx-toastr';
+import {User} from "../../domain/user";
 
 
 @Component({
@@ -48,6 +49,7 @@ export class RegistrationComponent implements OnInit {
       return;
     }
     this.loading = true;
+    //я не умею дебажить, возможно тут не все поля. всё передаются, возможно, так : "...this.registerForm.value"
     this.userService.register(this.registerForm.value);
     this.router.navigate(['/login']);
   }
