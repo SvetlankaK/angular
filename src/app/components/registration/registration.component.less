@@ -24,14 +24,13 @@ h1 {
 
 .form .contact {
   font-size: 20px;
-  margin: 10px;
-  font-family: Arial, Helvetica;
+  margin:15px 15px 30px 15px;
+  font-family: Arial, Helvetica, serif;
 }
 
 .form input {
   width: 80%;
-  height: 30px;
-  margin: 10px;
+  height: 35px;
 }
 
 .form label {
@@ -39,6 +38,7 @@ h1 {
   font-weight: bold;
   font-size: 18px;
   font-family: "Segoe Print", serif;
+  margin-right: 10px;
 }
 
 
@@ -49,21 +49,21 @@ h1 {
 
 
 .buttons {
-  margin-top: 10px;
+  margin-top: 7%;
   display: inline-block;
-  padding: 10px;
+  padding: 15px;
   text-decoration: none;
   font-weight: bold;
-  line-height: 1;
+  line-height: 1.5;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
   box-shadow: 0 1px 3px #999;
   text-shadow: 0 -1px 1px #222;
-  position: relative;
+  position: absolute;
   cursor: pointer;
   font-size: 20px;
-  top: 20%;
+  top: 60%;
   border: 1px solid;
   font-family: Verdana, Geneva, sans-serif;
 }
@@ -76,7 +76,7 @@ button {
   -webkit-box-shadow: 0 1px 3px #999;
   box-shadow: 0 1px 3px #999;
   text-shadow: 0 -1px 1px #222;
-  left: 20%;
+  left: 35%;
   outline: none;
 }
 
@@ -85,7 +85,7 @@ button:hover {
 }
 
 .link-button {
-  left: 40%;
+  left: 55%;
   vertical-align: top;
   color: #bbb;
   text-align: center;
@@ -99,27 +99,39 @@ button:hover {
 }
 
 legend {
+  position: relative;
+  bottom:30%;
   font-family: "Segoe Print", serif;
 }
 
 .error {
   color: rgba(255, 0, 0, 0.7);
   font-family: "Segoe Print";
-  display: inline-block;
-  font-size: 16px;
-}
-
-//todo вот две попытки изменить вид календаря. от классов ангуляра, которые пыталась переопределить до встроенного мной класс.
-// ничего из этого не робит. инлайн стайлы в p-calendar тоже пыталась
-::ng-deep .ui-timepicker .ui-widget-header {
-  width: 70px;
-  height: 70px;
-
-}
-
-.driverLicExpCal {
   position: absolute;
-  left: 210px;
-  width: 70px;
+}
+
+
+::ng-deep .ui-timepicker .ui-widget-header {
+  width: 50px;
   height: 70px;
+}
+
+
+.p-calendar {
+  width: 60px;
+  height: 70px;
+}
+
+fieldset{
+  margin-top: 6%;
+}
+
+input {
+  &.ng-invalid.ng-touched {
+    border: 1px solid red;
+  }
+
+  &.ng-valid.ng-touched {
+    border: 1px solid green;
+  }
 }

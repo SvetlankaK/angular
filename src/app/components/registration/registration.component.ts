@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../../service/user.service";
 import {ToastrService} from 'ngx-toastr';
-import {User} from "../../domain/user";
+
 
 
 @Component({
@@ -39,7 +39,7 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  get fval() {
+  get errorFiled() {
     return this.registerForm.controls;
   }
 

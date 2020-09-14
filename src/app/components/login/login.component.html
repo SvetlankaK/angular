@@ -5,16 +5,16 @@
 
       <div class="blockinput">
         <input type="text" formControlName="login" placeholder="Login" autocomplete="off" class="form-control"
-               [ngClass]="{ 'is-invalid': submitted && fval.login.errors }"/>
-        <div *ngIf="submitted && fval.login.errors">
-          <div *ngIf="fval.login.errors.required" class="error">Login is required</div>
+               [ngClass]="{ 'is-invalid': submitted && errorField.login.errors }"/>
+        <div *ngIf="submitted && errorField.login.errors">
+          <div *ngIf="errorField.login.errors.required" class="error">Login is required</div>
         </div>
       </div>
       <div class="blockinput">
         <input type="password" formControlName="password" placeholder="Password" class="form-control"
-               [ngClass]="{ 'is-invalid': submitted && fval.password.errors }"/>
-        <div *ngIf="submitted && fval.password.errors">
-          <div *ngIf="fval.password.errors.required" class="error">Password is required</div>
+               [ngClass]="{ 'is-invalid': submitted && errorField.password.errors }"/>
+        <div *ngIf="submitted && errorField.password.errors">
+          <div *ngIf="errorField.password.errors.required" class="error">Password is required</div>
 
         </div>
       </div>
@@ -23,7 +23,7 @@
     <button type="submit">
       Login
     </button>
-    <div *ngIf="invalidData&& (!fval.password.errors && !fval.login.errors)" class="error error-cred"> Bad credentials
+    <div *ngIf="invalidData&& (!errorField.password.errors && !errorField.login.errors)" class="error error-cred"> Bad credentials
     </div>
     <p class="regCase">
       Don’t have an account?
@@ -31,3 +31,4 @@
     <a routerLink="/registration" class="regLink">Sign up now</a>
   </form>
 </div>
+

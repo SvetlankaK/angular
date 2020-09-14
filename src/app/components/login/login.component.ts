@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  get fval() {
+  get errorField() {
     return this.loginForm.controls;
   }
 

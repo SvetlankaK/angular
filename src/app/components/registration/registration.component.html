@@ -5,40 +5,41 @@
 
     <div class="contact"><label for="name">Name</label>
       <input type="text" formControlName="name" id="name" tabindex="1"
-             [ngClass]="{ 'is-invalid': submitted && fval.name.errors }"
+             [ngClass]="{ 'is-invalid': submitted && errorFiled.name.errors }"
              placeholder="Enter your name here"/>
-      <div *ngIf="submitted && fval.name.errors">
-        <div *ngIf="fval.name.errors.required" class="error">Name is required</div>
-        <div *ngIf="fval.name.errors.minlength" class="error">Name must be at least 6 characters</div>
+      <div  *ngIf="submitted && errorFiled.name.errors">
+        <small *ngIf="errorFiled.name.errors.required" class="error">Name is required</small>
+        <small *ngIf="errorFiled.name.errors.minlength" class="error">Name must be at least 6 characters</small>
       </div>
     </div>
 
     <div class="contact"><label for="surname">Surname</label>
       <input type="text" formControlName="name" id="surname"
-             [ngClass]="{ 'is-invalid': submitted && fval.surname.errors }"
+             [ngClass]="{ 'is-invalid': submitted && errorFiled.surname.errors }"
              placeholder="Enter surname here"/>
-      <div *ngIf="submitted && fval.surname.errors">
-        <div *ngIf="fval.surname.errors.required" class="error">Surname is required</div>
-        <div *ngIf="fval.surname.errors.minlength" class="error">Surname must be at least 6 characters</div>
+      <div *ngIf="submitted && errorFiled.surname.errors">
+        <small *ngIf="errorFiled.surname.errors.required" class="error">Surname is required</small>
+      <small *ngIf="errorFiled.surname.errors.minlength" class="error">Surname must be at least 6 characters</small>
       </div>
     </div>
 
     <div class="contact"><label for="email">Email</label>
       <input type="text" formControlName="email" id="email" tabindex="2"
-             [ngClass]="{ 'is-invalid': submitted && fval.email.errors }"
+             [ngClass]="{ 'is-invalid': submitted && errorFiled.email.errors }"
              placeholder="Enter email here"/>
-      <div *ngIf="submitted && fval.email.errors">
-        <div *ngIf="fval.email.errors.required" class="error">Email is required</div>
-        <div *ngIf="fval.email.errors.email" class="error">Enter valid email address</div>
+      <div *ngIf="submitted && errorFiled.email.errors">
+        <small *ngIf="errorFiled.email.errors.required" class="error">Email is required</small>
+        <small *ngIf="errorFiled.email.errors.email" class="error">Enter valid email address</small>
       </div>
     </div>
-    <!--todo я пока закомментила строку с календарем шоб не вылезало за пределы формы. поэтому форма немного поплыла, ибо расчитано, что там ещё будет календарь
-    <!-- но если бы я смогла изменять размер календаря, это бы исправилось-->
 
     <div class="contact"><label for="dateOfBirth">Date Of Birth</label>
-      <!--      <p-calendar formControlName="dateOfBirth" styleClass="driverLicExpCal form-control" id="dateOfBirth" [inline]="true"></p-calendar>-->
-    </div>
+      <p-calendar formControlName="dateOfBirth" [inline]="false" [showIcon]="true" id="dateOfBirth"></p-calendar>
+      <div *ngIf="submitted && errorFiled.dateOfBirth.errors">
+        <small *ngIf="errorFiled.dateOfBirth.errors.required" class="error">Date of birth is required</small>
 
+      </div>
+    </div>
 
     <fieldset>
       <legend>
@@ -47,21 +48,21 @@
       <div class="contact"><label for="login">Login</label>
 
         <input type="text" formControlName="login" id="login" tabindex="2"
-               [ngClass]="{ 'is-invalid': submitted && fval.login.errors }"
+               [ngClass]="{ 'is-invalid': submitted && errorFiled.login.errors }"
                placeholder="Enter login here"/>
-        <div *ngIf="submitted && fval.login.errors">
-          <div *ngIf="fval.login.errors.required" class="error">Login is required</div>
-          <div *ngIf="fval.login.errors.minlength" class="error">Login must be at least 6 characters</div>
+        <div *ngIf="submitted && errorFiled.login.errors">
+          <small *ngIf="errorFiled.login.errors.required" class="error">Login is required</small>
+          <small *ngIf="errorFiled.login.errors.minlength" class="error">Login must be at least 6 characters</small>
         </div>
       </div>
 
       <div class="contact"><label for="password">Password</label>
         <input type="password" id="password" formControlName="password" tabindex="2"
-               [ngClass]="{ 'is-invalid': submitted && fval.password.errors }"
+               [ngClass]="{ 'is-invalid': submitted && errorFiled.password.errors }"
                placeholder="Enter login here"/>
-        <div *ngIf="submitted && fval.password.errors">
-          <div *ngIf="fval.password.errors.required" class="error">Password is required</div>
-          <div *ngIf="fval.password.errors.minlength" class="error">Password must be at least 6 characters</div>
+        <div *ngIf="submitted && errorFiled.password.errors">
+          <small *ngIf="errorFiled.password.errors.required" class="error">Password is required</small>
+          <small *ngIf="errorFiled.password.errors.minlength" class="error">Password must be at least 6 characters</small>
         </div>
       </div>
 
@@ -73,7 +74,23 @@
     <input type="hidden" formControlName="id" value="{{ generateId() }}"/>
   </form>
 </div>
+<!--/*bind() - передача контекста, нужен вызов, ибо возвращает новую функцию-->
+<!--call() - сразу же вызвает-->
+<!--apply() - всегда передача двух параметров - контест, [массив паратметров]-->
+<!--*/-->
+
+<!--/*замыкания-->
+<!--функиця внутри другой функции-->
+<!--замыкаются переданные параметры в верхней функции-->
+<!--*/-->
+
+<!--/*асинхронность
+асинхронная функия попадает в стек(call stack), регается, видно, что web апи бразуерный(сет таймаут/любые асинхр(скролы, клики, серверные операции), выкидывается оттуда
+в чередь браузерного апи(callback queue)и ждем
+пока пройдет время таймаута(проходкой по циклу(event loop!!), готово ли). во время готовности - закидывается обратно
+__
+при нулевом таймауте, он сразу не отработает -  а после синхронных
+-->
 
 
-
-
+<!--*/-->
