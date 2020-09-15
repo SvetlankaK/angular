@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute, RouterModule} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from "../../service/user.service";
 import {ToastrService} from "ngx-toastr";
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   invalidData = false;
   id: string;
-  stringifiedData: any;
+  stringifyData: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,9 +49,9 @@ export class LoginComponent implements OnInit {
       const login = this.loginForm.get('login').value;
       const password = this.loginForm.get('password').value;
       let user = this.service.getByLogin(login);
-      this.stringifiedData = JSON.stringify(user);
+      this.stringifyData = JSON.stringify(user);
       localStorage.setItem("loggedIn", "true");
-      localStorage.setItem("user", this.stringifiedData);
+      localStorage.setItem("user", this.stringifyData);
       if (user != null && user.password == password) {
         this.router.navigate(['welcome']);
       } else {

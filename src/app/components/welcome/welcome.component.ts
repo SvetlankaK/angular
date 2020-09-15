@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../domain/user";
-import {UserService} from "../../service/user.service";
 import {AppComponent} from "../../app.component";
 
 
@@ -15,7 +14,7 @@ export class WelcomeComponent implements OnInit {
 
   currentUser: User;
   login: string;
-  constructor(private service: UserService) {
+  constructor() {
   }
 
   ngOnInit(): void {
