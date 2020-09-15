@@ -19,10 +19,9 @@ export class WelcomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.getItem("loggedIn") === "true") {
-      let user = JSON.parse(localStorage.getItem("user"));
-      this.login = user.userLogin;
-      if (user.role == "admin") {
-      }
+      this.currentUser = JSON.parse(localStorage.getItem("user"));
+      console.log(this.currentUser.login);
+      this.login = this.currentUser.login;
     }
   }
 

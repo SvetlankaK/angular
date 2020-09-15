@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../../service/user.service";
-import {ToastrService} from 'ngx-toastr';
-import {delay} from "rxjs/operators";
 
 
 @Component({
@@ -17,7 +15,7 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private userService: UserService, private toastr: ToastrService) {
+    private userService: UserService) {
   }
 
   registerForm: FormGroup;

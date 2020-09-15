@@ -1,4 +1,4 @@
 <app-header *ngIf="isHeaderFooterShown()"></app-header>
-<app-content *ngIf="isHeaderFooterShown()"><router-outlet></router-outlet></app-content>
+<app-content *ngIf="isHeaderFooterShown()"></app-content>
 <app-footer *ngIf="isHeaderFooterShown()"></app-footer>
 <router-outlet *ngIf="!isHeaderFooterShown()"></router-outlet>
