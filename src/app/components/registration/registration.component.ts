@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../../service/user.service";
 import {ToastrService} from 'ngx-toastr';
-
+import {delay} from "rxjs/operators";
 
 
 @Component({
@@ -21,9 +21,10 @@ export class RegistrationComponent implements OnInit {
   }
 
   registerForm: FormGroup;
-  loading = false;
+  registered = false;
   submitted = false;
   dateOfBirth: Date;
+
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -48,10 +49,12 @@ export class RegistrationComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    this.loading = true;
     //я не умею дебажить, возможно тут не все поля. всё передаются, возможно, так : "...this.registerForm.value"
     this.userService.register(this.registerForm.value);
-    this.router.navigate(['/login']);
+    this.registered = true;
+    setTimeout(() => {
+      this.router.navigate(['/login'])
+    }, 3000);
   }
 
   generateId() {

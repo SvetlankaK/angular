@@ -18,6 +18,7 @@ export class UsersComponent implements OnInit {
   users: User[];
   users2: User[];
   clonedUsers: { [s: string]: User; } = {};
+  wait = false;
 
   ngOnInit(): void {
     this.sService.onAppCommonTemplate.emit(true);
@@ -37,6 +38,10 @@ export class UsersComponent implements OnInit {
       this.users.push(user);
       delete this.clonedUsers[user.id];
     }
+    this.wait = true;
+    setTimeout(() => {
+      this.wait = false;
+    }, 2000);
   }
 
   onRowEditCancel(user: User, index: number) {

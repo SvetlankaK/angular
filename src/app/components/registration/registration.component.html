@@ -1,13 +1,13 @@
+<body *ngIf="!registered; else userRegistered">
 <h1 class="logo">Register new account</h1>
 <div class="form">
   <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()" id="contactform">
-
 
     <div class="contact"><label for="name">Name</label>
       <input type="text" formControlName="name" id="name" tabindex="1"
              [ngClass]="{ 'is-invalid': submitted && errorFiled.name.errors }"
              placeholder="Enter your name here"/>
-      <div  *ngIf="submitted && errorFiled.name.errors">
+      <div *ngIf="submitted && errorFiled.name.errors">
         <small *ngIf="errorFiled.name.errors.required" class="error">Name is required</small>
         <small *ngIf="errorFiled.name.errors.minlength" class="error">Name must be at least 6 characters</small>
       </div>
@@ -19,7 +19,7 @@
              placeholder="Enter surname here"/>
       <div *ngIf="submitted && errorFiled.surname.errors">
         <small *ngIf="errorFiled.surname.errors.required" class="error">Surname is required</small>
-      <small *ngIf="errorFiled.surname.errors.minlength" class="error">Surname must be at least 6 characters</small>
+        <small *ngIf="errorFiled.surname.errors.minlength" class="error">Surname must be at least 6 characters</small>
       </div>
     </div>
 
@@ -37,7 +37,6 @@
       <p-calendar formControlName="dateOfBirth" [inline]="false" [showIcon]="true" id="dateOfBirth"></p-calendar>
       <div *ngIf="submitted && errorFiled.dateOfBirth.errors">
         <small *ngIf="errorFiled.dateOfBirth.errors.required" class="error">Date of birth is required</small>
-
       </div>
     </div>
 
@@ -62,7 +61,8 @@
                placeholder="Enter login here"/>
         <div *ngIf="submitted && errorFiled.password.errors">
           <small *ngIf="errorFiled.password.errors.required" class="error">Password is required</small>
-          <small *ngIf="errorFiled.password.errors.minlength" class="error">Password must be at least 6 characters</small>
+          <small *ngIf="errorFiled.password.errors.minlength" class="error">Password must be at least 6
+            characters</small>
         </div>
       </div>
 
@@ -74,6 +74,17 @@
     <input type="hidden" formControlName="id" value="{{ generateId() }}"/>
   </form>
 </div>
+</body>
+
+<ng-template #userRegistered>
+  <div class="card">
+    <div class="success-template">
+      <i class="checkmark">✓</i>
+    </div>
+    <h1 class="success-templateH">Success</h1>
+    <p class="success-templateP">You were successfully registered!</p>
+  </div>
+</ng-template>
 
 
-<!--*/-->
+

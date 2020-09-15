@@ -10,7 +10,7 @@ h1 {
   height: 65%;
   margin: 30px auto;
   -webkit-border-radius: 10px;
-  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   -webkit-padding-end: 20px;
   -webkit-padding-start: 2px;
   -webkit-user-select: none;
@@ -24,7 +24,7 @@ h1 {
 
 .form .contact {
   font-size: 20px;
-  margin:15px 15px 30px 15px;
+  margin: 15px 15px 30px 15px;
   font-family: Arial, Helvetica, serif;
 }
 
@@ -100,13 +100,13 @@ button:hover {
 
 legend {
   position: relative;
-  bottom:30%;
+  bottom: 30%;
   font-family: "Segoe Print", serif;
 }
 
 .error {
   color: rgba(255, 0, 0, 0.7);
-  font-family: "Segoe Print";
+  font-family: "Segoe Print", serif;
   position: absolute;
 }
 
@@ -122,7 +122,7 @@ legend {
   height: 70px;
 }
 
-fieldset{
+fieldset {
   margin-top: 6%;
 }
 
@@ -134,4 +134,51 @@ input {
   &.ng-valid.ng-touched {
     border: 1px solid green;
   }
+}
+
+.success-templateBody div {
+  text-align: center;
+  background: #EBF0F5;
+margin-right: 50%;
+}
+
+.success-templateH h1 {
+  color: #88B04B;
+  font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+  font-weight: 900;
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.success-templateP p {
+  color: #404F5E;
+  font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  margin: 0;
+}
+
+i {
+  color: #9ABC66;
+  font-size: 100px;
+  line-height: 200px;
+  margin-left: -15px;
+}
+
+.card {
+  background:  cadetblue;
+  padding: 60px;
+  border-radius: 4px;
+  box-shadow: 0 2px 3px #C8D0D8;
+  display: inline-block;
+  margin: 10% 40%;
+  text-align: center;
+}
+
+.success-template {
+  border-radius: 200px;
+  height: 200px;
+  width: 200px;
+  background: #F8FAF5;
+  margin: 0 auto;
+  text-align: center;
 }

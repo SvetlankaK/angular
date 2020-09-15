@@ -1,7 +1,7 @@
 <div class="card">
   <h5>Users</h5>
   <p-table [value]="users" [scrollable]="true" scrollHeight="350px" dataKey="id" editMode="row"
-           styleClass="p-datatable-responsive-demo">
+           styleClass="p-datatable-responsive-demo" *ngIf="!wait;else waitingCircle">
     <ng-template pTemplate="header">
       <tr>
         <th>Name,Surname</th>
@@ -78,4 +78,7 @@
       </tr>
     </ng-template>
   </p-table>
+  <ng-template #waitingCircle>
+    <p-progressSpinner></p-progressSpinner>
+  </ng-template>
 </div>

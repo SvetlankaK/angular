@@ -3,7 +3,7 @@ import {Router, ActivatedRoute, RouterModule} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from "../../service/user.service";
 import {ToastrService} from "ngx-toastr";
-
+import {PrimeNGConfig} from "primeng/api";
 
 
 @Component({
@@ -23,10 +23,12 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private service: UserService, private toastr: ToastrService) {
+    private service: UserService, private toastr: ToastrService,
+    private primengConfig: PrimeNGConfig) {
   }
 
   ngOnInit() {
+    this.primengConfig.ripple = true;
     this.loginForm = this.formBuilder.group({
       login: ['', Validators.required],
       password: ['', Validators.required]
@@ -48,8 +50,8 @@ export class LoginComponent implements OnInit {
       const password = this.loginForm.get('password').value;
       let user = this.service.getByLogin(login);
       this.stringifiedData = JSON.stringify(user);
-      localStorage.setItem("loggedIn","true");
-      localStorage.setItem("user",this.stringifiedData);
+      localStorage.setItem("loggedIn", "true");
+      localStorage.setItem("user", this.stringifiedData);
       if (user != null && user.password == password) {
         this.router.navigate(['welcome']);
       } else {

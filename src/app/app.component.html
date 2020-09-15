@@ -1,22 +1,4 @@
-<div *ngIf="commonTemplate" class="container">
-  <header class="header">
-    <h1 class="logo">Useless application</h1>
-    <ul class="menu-main">
-      <li><a routerLink="/welcome" class="current">Main</a></li>
-      <li *ngIf="admin"><a routerLink="/users">Users</a></li>
-      <li><a routerLink="/logout" class="logoutLink">Logout</a></li>
-    </ul>
-  </header>
-  <div class="content-body">
-    <main class="content">
-      <app-welcome *ngIf="welcomePage"><router-outlet></router-outlet></app-welcome>
-      <app-users *ngIf="usersPage"><router-outlet></router-outlet></app-users>
-    </main>
-    <nav class="sidenav"></nav>
-    <aside class="ads"></aside>
-  </div>
-  <footer class="footer">
-    <div class="footerInfo">Made by Sveta Kvetko, 2020</div>
-  </footer>
-</div>
-<router-outlet *ngIf="!commonTemplate"></router-outlet>
+<app-header *ngIf="isHeaderFooterShown()"></app-header>
+<app-content *ngIf="isHeaderFooterShown()"><router-outlet></router-outlet></app-content>
+<app-footer *ngIf="isHeaderFooterShown()"></app-footer>
+<router-outlet *ngIf="!isHeaderFooterShown()"></router-outlet>

@@ -17,6 +17,11 @@ import {ButtonModule} from 'primeng/button';
 import {TabViewModule} from "primeng/tabview";
 import {InputTextModule} from "primeng/inputtext";
 import { ErrorComponent } from './components/error/error.component';
+import {RippleModule} from "primeng/ripple";
+import {ProgressSpinnerModule} from "primeng/progressspinner";
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ContentComponent } from './components/content/content.component';
 
 
 
@@ -27,7 +32,10 @@ import { ErrorComponent } from './components/error/error.component';
     RegistrationComponent,
     WelcomeComponent,
     UsersComponent,
-    ErrorComponent
+    ErrorComponent,
+    HeaderComponent,
+    FooterComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +49,9 @@ import { ErrorComponent } from './components/error/error.component';
     ButtonModule,
     TabViewModule,
     ToastrModule.forRoot(),
-    InputTextModule
+    InputTextModule,
+    RippleModule,
+    ProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
