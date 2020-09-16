@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {AuthService} from "../../service/auth.service";
 
 @Component({
   selector: 'app-error',
@@ -8,7 +9,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ErrorComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private authService: AuthService) {
   }
 
   unauthorized: boolean;
@@ -30,7 +31,5 @@ export class ErrorComponent implements OnInit {
     }
   }
 
-  redirectForUser() {
 
-  }
 }
