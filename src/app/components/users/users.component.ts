@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {User} from "../../domain/user";
 import {UserService} from "../../service/user.service";
 import {AppComponent} from "../../app.component";
-import {SharedService} from "../../service/shared.service";
 
 @Component({
   selector: 'app-users',
@@ -12,7 +11,7 @@ import {SharedService} from "../../service/shared.service";
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private service: UserService, private sService: SharedService) {
+  constructor(private service: UserService) {
   }
 
   users: User[];
@@ -21,8 +20,6 @@ export class UsersComponent implements OnInit {
   wait = false;
 
   ngOnInit(): void {
-    this.sService.onAppCommonTemplate.emit(true);
-    this.sService.onAppUsersTemplate.emit(true);
     this.users = this.service.findAll();
     this.users2 = this.service.findAll();
   }
