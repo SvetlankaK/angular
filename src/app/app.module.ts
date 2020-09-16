@@ -19,9 +19,13 @@ import {InputTextModule} from "primeng/inputtext";
 import { ErrorComponent } from './components/error/error.component';
 import {RippleModule} from "primeng/ripple";
 import {ProgressSpinnerModule} from "primeng/progressspinner";
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { ContentComponent } from './components/content/content.component';
+import {DropdownModule} from 'primeng/dropdown';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {ListboxModule} from 'primeng/listbox';
+import { LogoutComponent } from './components/logout/logout.component';
+import {ContentComponent} from './components/content/content.component';
+import {HeaderComponent} from './components/header/header.component';
+import {FooterComponent} from './components/footer/footer.component';
 
 
 
@@ -33,9 +37,10 @@ import { ContentComponent } from './components/content/content.component';
     WelcomeComponent,
     UsersComponent,
     ErrorComponent,
+    LogoutComponent,
+    ContentComponent,
     HeaderComponent,
-    FooterComponent,
-    ContentComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,10 @@ import { ContentComponent } from './components/content/content.component';
     ToastrModule.forRoot(),
     InputTextModule,
     RippleModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    DropdownModule,
+    MultiSelectModule,
+    ListboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../domain/user";
-import {UserService} from "../../service/user.service";
-import {AppComponent} from "../../app.component";
+import {User} from '../../domain/user';
+import {UserService} from '../../service/user.service';
+import {AppComponent} from '../../app.component';
+import {SelectItem} from 'primeng/api';
 
 @Component({
   selector: 'app-users',
@@ -15,41 +16,44 @@ export class UsersComponent implements OnInit {
   }
 
   users: User[];
-  users2: User[];
+  roles: SelectItem[];
   clonedUsers: { [s: string]: User; } = {};
   wait = false;
 
   ngOnInit(): void {
+    this.roles = [{
+      label: 'User',
+      value: 'user'
+    },
+      {
+        label: 'Admin',
+        value: 'admin'
+      }];
+    this.loadUsers();
+  }
+
+  loadUsers(): void {
     this.users = this.service.findAll();
-    this.users2 = this.service.findAll();
   }
 
   onRowEditInit(user: User) {
-    this.clonedUsers[user.id] = {...user};
+    this.clonedUsers[user.login] = {...user};
+    console.log(this.clonedUsers);
   }
 
   onRowEditSave(user: User) {
-    if (user.salary > 0) {
-      let ind = this.users.indexOf(user);
-      delete this.users[ind];
-      this.users.push(user);
-      delete this.clonedUsers[user.id];
-    }
-    this.wait = true;
-    setTimeout(() => {
-      this.wait = false;
-    }, 2000);
+    delete this.clonedUsers[user.login];
+    this.service.update(user);
+    this.loadUsers();
   }
 
   onRowEditCancel(user: User, index: number) {
-    this.users2[index] = this.clonedUsers[user.id];
-    delete this.clonedUsers[user.id];
+    this.users[index] = this.clonedUsers[user.login];
+    delete this.clonedUsers[user.login];
   }
 
   delete(user: User) {
     this.service.delete(user.id);
-    let ind = this.users.indexOf(user);
-    delete this.users[ind];
-
+    this.loadUsers();
   }
 }

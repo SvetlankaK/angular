@@ -1,5 +1,6 @@
 import {Component, Injectable} from '@angular/core';
 import {Router} from "@angular/router";
+import {AuthService} from './service/auth.service';
 
 @Injectable()
 @Component({
@@ -21,4 +22,6 @@ export class AppComponent {
   isHeaderFooterShown(): boolean {
     return !(this.route.url.includes('login') || this.route.url.includes('registration') || this.route.url.includes('error'));
   }
+
+
 }

@@ -15,10 +15,4 @@ export class ContentComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  usersPage():boolean{
-  return  this.route.url.includes('users')
-  }
-  welcomePage():boolean{
-   return  this.route.url.includes('registration')
-  }_
 }

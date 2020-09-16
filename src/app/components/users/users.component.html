@@ -28,7 +28,7 @@
         <td>
           <p-cellEditor>
             <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="rowData.role" required [ngStyle]="{'width':'100%'}">
+              <p-listbox multiple="true" [options]="roles" [(ngModel)]="rowData.role"></p-listbox>
             </ng-template>
             <ng-template pTemplate="output">
               {{rowData.role}}
@@ -71,8 +71,8 @@
           <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success"
                   style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
           <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger"
-                  (click)="onRowEditCancel(rowData, ri)"></button>
-          <button pButton type="button" icon="pi pi-times" class="ui-button-danger delete-button"
+                  (click)="onRowEditCancel(rowData,ri)"></button>
+          <button *ngIf="!editing" pButton type="button" icon="pi pi-times" class="ui-button-danger delete-button"
                   (click)="delete(rowData)"></button>
         </td>
       </tr>

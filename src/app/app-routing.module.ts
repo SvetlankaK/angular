@@ -6,13 +6,17 @@ import {WelcomeComponent} from "./components/welcome/welcome.component";
 import {BrowserModule} from "@angular/platform-browser";
 import {UsersComponent} from "./components/users/users.component";
 import {ErrorComponent} from "./components/error/error.component";
+import {LogoutComponent} from './components/logout/logout.component';
+import {AuthorizedGuard} from './service/authorized.guard';
+import {AdminGuard} from './service/admin.guard';
 
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'logout', component: LogoutComponent},
   {path: 'registration', component: RegistrationComponent},
-  {path: 'welcome', component: WelcomeComponent},
-  {path: 'users', component: UsersComponent},
+  {path: 'welcome', component: WelcomeComponent, canActivate: [AuthorizedGuard]},
+  {path: 'users', component: UsersComponent, canActivate: [AuthorizedGuard, AdminGuard]},
   {path: 'error/:type', component: ErrorComponent},
   {path: '**', redirectTo: 'login'}
 ];

@@ -1,6 +1,3 @@
 <app-header *ngIf="isHeaderFooterShown()"></app-header>
-<app-content *ngIf="isHeaderFooterShown()">
-  <router-outlet></router-outlet>
-</app-content>
+<router-outlet></router-outlet>
 <app-footer *ngIf="isHeaderFooterShown()"></app-footer>
-<router-outlet *ngIf="!isHeaderFooterShown()"></router-outlet>

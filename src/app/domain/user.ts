@@ -72,11 +72,11 @@ export class User {
   email: string;
   id: number;
   salary: number;
-  role:string;
+  role: string[];
 
 
 
-  constructor(id: number, name: string, login: string, password: string, surname: string, dateOfBirth: string, email: string, salary: number, role:string) {
+  constructor(id: number, name: string, login: string, password: string, surname: string, dateOfBirth: string, email: string, salary: number, role: string[]) {
   }
 
 }

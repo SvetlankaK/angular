@@ -1,5 +1,5 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {User} from "../domain/user";
+import {User} from '../domain/user';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class UserService {
     email: 'cat1717@mail.ru',
     name: 'Анна',
     surname: 'Иванова', dateOfBirth: "11.11.1998",
-    role: 'user',
+    role: ['user'],
     salary: 100
   }, {
     id: 2,
@@ -23,7 +23,7 @@ export class UserService {
     name: 'Максим',
     surname: 'Вешалкин',
     dateOfBirth: "11.05.1995",
-    role: 'user',
+    role: ['user'],
     salary: 100
   }, {
     id: 3,
@@ -33,7 +33,7 @@ export class UserService {
     name: 'Света',
     surname: 'Кветко',
     dateOfBirth: '04.06.2000',
-    role: 'user',
+    role: ['user', 'admin'],
     salary: 100
   },
     {
@@ -45,7 +45,7 @@ export class UserService {
       surname: 'Ворошилов',
       dateOfBirth: '17.02.1998',
       salary: 2000,
-      role: 'admin'
+      role: ['user', 'admin'],
     }, {
       id: 5,
       login: 'gerald',
@@ -54,7 +54,7 @@ export class UserService {
       name: 'Грегорий',
       surname: 'Навицкий',
       dateOfBirth: '17.05.1992',
-      role: 'user',
+      role: ['user'],
       salary: 1222
     }, {
       id: 6,
@@ -64,7 +64,7 @@ export class UserService {
       name: 'Варя',
       surname: 'Колесникович',
       dateOfBirth: '11.01.1990',
-      role: 'user',
+      role: ['user'],
       salary: 1999
     }];
 
@@ -87,17 +87,14 @@ export class UserService {
     return this.users.push(user);
   }
 
-  update(user: User, id: number) {
-    let u = this.getById(id);
+  update(user: User) {
+    let u = this.getById(user.id);
     let ind = this.users.indexOf(u);
-    delete this.users[ind];
-    this.users.push(user);
+    this.users[ind] = user;
   }
 
   delete(id: number) {
-    let user = this.users.find(user => user.id == id);
-    let ind = this.users.indexOf(user);
-    delete this.users[ind];
+    this.users = this.users.filter(user => user.id !== id);
   }
 
   generateId() {

@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserService} from "../../service/user.service";
 import {ToastrService} from "ngx-toastr";
 import {PrimeNGConfig} from "primeng/api";
+import {AuthService} from '../../service/auth.service';
 
 
 @Component({
@@ -17,13 +18,12 @@ export class LoginComponent implements OnInit {
   submitted = false;
   invalidData = false;
   id: string;
-  stringifyData: any;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private service: UserService, private toastr: ToastrService,
+    private authService: AuthService, private toastr: ToastrService,
     private primengConfig: PrimeNGConfig) {
   }
 
@@ -48,11 +48,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const login = this.loginForm.get('login').value;
       const password = this.loginForm.get('password').value;
-      let user = this.service.getByLogin(login);
-      this.stringifyData = JSON.stringify(user);
-      localStorage.setItem("loggedIn", "true");
-      localStorage.setItem("user", this.stringifyData);
-      if (user != null && user.password == password) {
+      if (this.authService.login(login, password)) {
         this.router.navigate(['welcome']);
       } else {
         this.invalidData = true;
