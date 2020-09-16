@@ -18,7 +18,7 @@ export class AuthorizedGuard implements CanActivate {
     if (this.authService.isLoggedIn()) {
       return true;
     } else {
-      this.router.navigate(['login']);
+      this.router.navigate(['error/401']);
     }
   }
 

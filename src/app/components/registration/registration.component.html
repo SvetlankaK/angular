@@ -1,7 +1,7 @@
 <body *ngIf="!registered; else userRegistered">
 <h1 class="logo">Register new account</h1>
 <div class="form">
-  <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()" id="contactform">
+  <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()" >
 
     <div class="contact"><label for="name">Name</label>
       <input type="text" formControlName="name" id="name" tabindex="1"
@@ -14,7 +14,7 @@
     </div>
 
     <div class="contact"><label for="surname">Surname</label>
-      <input type="text" formControlName="name" id="surname"
+      <input type="text" formControlName="surname" id="surname"
              [ngClass]="{ 'is-invalid': submitted && errorFiled.surname.errors }"
              placeholder="Enter surname here"/>
       <div *ngIf="submitted && errorFiled.surname.errors">
@@ -34,7 +34,7 @@
     </div>
 
     <div class="contact"><label for="dateOfBirth">Date Of Birth</label>
-      <p-calendar formControlName="dateOfBirth" [inline]="false" [showIcon]="true" id="dateOfBirth"></p-calendar>
+      <p-calendar formControlName="dateOfBirth" dateFormat="dd.mm.yy" dataType="string" [inline]="false" [showIcon]="true" id="dateOfBirth"></p-calendar>
       <div *ngIf="submitted && errorFiled.dateOfBirth.errors">
         <small *ngIf="errorFiled.dateOfBirth.errors.required" class="error">Date of birth is required</small>
       </div>
@@ -70,8 +70,6 @@
     <button type="submit" class="p-button-raised p-button-rounded buttons"  pRipple>Register now</button>
     <a routerLink="/login" class="link-button buttons"  pRipple>Back to login</a>
 
-    <input type="hidden" formControlName="salary" value="100"/>
-    <input type="hidden" formControlName="id" value="{{ generateId() }}"/>
   </form>
 </div>
 </body>

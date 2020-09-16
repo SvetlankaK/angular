@@ -32,8 +32,8 @@ export class RegistrationComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       login: ['', [Validators.required, Validators.minLength(6)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      salary: [],
-      id: [],
+      salary: ["100"],
+      id: [this.generateId()],
       role: ['user']
     });
   }
@@ -47,13 +47,14 @@ export class RegistrationComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    //я не умею дебажить, возможно тут не все поля. всё передаются, возможно, так : "...this.registerForm.value"
+    console.log(this.registerForm.value);
     this.userService.register(this.registerForm.value);
     this.registered = true;
     setTimeout(() => {
       this.router.navigate(['/login'])
     }, 3000);
   }
+
 
   generateId() {
     return this.userService.generateId();

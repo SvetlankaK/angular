@@ -30,4 +30,7 @@ export class ErrorComponent implements OnInit {
     }
   }
 
+  redirectForUser() {
+
+  }
 }

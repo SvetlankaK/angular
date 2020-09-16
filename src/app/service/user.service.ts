@@ -8,8 +8,8 @@ export class UserService {
 
   users: User[] = [{
     id: 1,
-    login: 'kat17',
-    password: 'драсте',
+    login: 'kat',
+    password: 'pass',
     email: 'cat1717@mail.ru',
     name: 'Анна',
     surname: 'Иванова', dateOfBirth: "11.11.1998",
@@ -29,7 +29,7 @@ export class UserService {
     id: 3,
     login: 'Sveta',
     password: 'gfhjkm',
-    email: 'svetlanka@gmail.com',
+    email: 'svetla@gmail.com',
     name: 'Света',
     surname: 'Кветко',
     dateOfBirth: '04.06.2000',
@@ -60,9 +60,9 @@ export class UserService {
       id: 6,
       login: 'hello',
       password: 'world',
-      email: 'sggOllas@gmail.com',
+      email: 'sgas@gmail.com',
       name: 'Варя',
-      surname: 'Колесникович',
+      surname: 'Фоминова',
       dateOfBirth: '11.01.1990',
       role: ['user'],
       salary: 1999

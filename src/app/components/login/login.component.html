@@ -15,7 +15,6 @@
                [ngClass]="{ 'is-invalid': submitted && errorField.password.errors }"/>
         <div *ngIf="submitted && errorField.password.errors">
           <div *ngIf="errorField.password.errors.required" class="error">Password is required</div>
-
         </div>
       </div>
     </div>

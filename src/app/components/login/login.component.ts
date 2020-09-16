@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserService} from "../../service/user.service";
 import {ToastrService} from "ngx-toastr";
 import {PrimeNGConfig} from "primeng/api";
 import {AuthService} from '../../service/auth.service';
@@ -23,7 +22,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService, private toastr: ToastrService,
+    private authService: AuthService,
+    private toastr: ToastrService,
     private primengConfig: PrimeNGConfig) {
   }
 
