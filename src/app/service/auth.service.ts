@@ -10,6 +10,7 @@ export class AuthService {
   loggedUser: User = null;
 
   constructor(private userService: UserService) {
+    console.log(userService)
   }
 
 

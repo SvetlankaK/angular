@@ -1,81 +1,108 @@
 <body *ngIf="!registered; else userRegistered">
-<h1 class="logo">Register new account</h1>
-<div class="form">
-  <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()" >
 
-    <div class="contact"><label for="name">Name</label>
-      <input type="text" formControlName="name" id="name" tabindex="1"
-             [ngClass]="{ 'is-invalid': submitted && errorFiled.name.errors }"
-             placeholder="Enter your name here"/>
-      <div *ngIf="submitted && errorFiled.name.errors">
-        <small *ngIf="errorFiled.name.errors.required" class="error">Name is required</small>
-        <small *ngIf="errorFiled.name.errors.minlength" class="error">Name must be at least 6 characters</small>
-      </div>
+<div class="page-wrapper bg-dark">
+  <div class="card card-6">
+    <div class="card-heading">
+      <h2 class="title">Register new account</h2>
     </div>
 
-    <div class="contact"><label for="surname">Surname</label>
-      <input type="text" formControlName="surname" id="surname"
-             [ngClass]="{ 'is-invalid': submitted && errorFiled.surname.errors }"
-             placeholder="Enter surname here"/>
-      <div *ngIf="submitted && errorFiled.surname.errors">
-        <small *ngIf="errorFiled.surname.errors.required" class="error">Surname is required</small>
-        <small *ngIf="errorFiled.surname.errors.minlength" class="error">Surname must be at least 6 characters</small>
-      </div>
-    </div>
+    <div class="card-body">
+      <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()" id="contactform">
 
-    <div class="contact"><label for="email">Email</label>
-      <input type="text" formControlName="email" id="email" tabindex="2"
-             [ngClass]="{ 'is-invalid': submitted && errorFiled.email.errors }"
-             placeholder="Enter email here"/>
-      <div *ngIf="submitted && errorFiled.email.errors">
-        <small *ngIf="errorFiled.email.errors.required" class="error">Email is required</small>
-        <small *ngIf="errorFiled.email.errors.email" class="error">Enter valid email address</small>
-      </div>
-    </div>
 
-    <div class="contact"><label for="dateOfBirth">Date Of Birth</label>
-      <p-calendar formControlName="dateOfBirth" dateFormat="dd.mm.yy" dataType="string" [inline]="false" [showIcon]="true" id="dateOfBirth"></p-calendar>
-      <div *ngIf="submitted && errorFiled.dateOfBirth.errors">
-        <small *ngIf="errorFiled.dateOfBirth.errors.required" class="error">Date of birth is required</small>
-      </div>
-    </div>
-
-    <fieldset>
-      <legend>
-        Login data:
-      </legend>
-      <div class="contact"><label for="login">Login</label>
-
-        <input type="text" formControlName="login" id="login" tabindex="2"
-               [ngClass]="{ 'is-invalid': submitted && errorFiled.login.errors }"
-               placeholder="Enter login here"/>
-        <div *ngIf="submitted && errorFiled.login.errors">
-          <small *ngIf="errorFiled.login.errors.required" class="error">Login is required</small>
-          <small *ngIf="errorFiled.login.errors.minlength" class="error">Login must be at least 6 characters</small>
+        <div class="form-row"><label class="name" for="name">Name</label>
+          <div class="value">
+            <input class="input--style-6" type="text" formControlName="name" id="name" tabindex="1"
+                   placeholder="Enter your name here"/>
+            <div *ngIf="submitted && errorFiled.name.errors">
+              <small *ngIf="errorFiled.name.errors.required" class="error">Name is required</small>
+              <small *ngIf="errorFiled.name.errors.minlength" class="error">Name must be at least 6 characters</small>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="contact"><label for="password">Password</label>
-        <input type="password" id="password" formControlName="password" tabindex="2"
-               [ngClass]="{ 'is-invalid': submitted && errorFiled.password.errors }"
-               placeholder="Enter login here"/>
-        <div *ngIf="submitted && errorFiled.password.errors">
-          <small *ngIf="errorFiled.password.errors.required" class="error">Password is required</small>
-          <small *ngIf="errorFiled.password.errors.minlength" class="error">Password must be at least 6
-            characters</small>
+        <div class="form-row"><label class="name" for="surname">Surname</label>
+          <div class="value">
+            <input class="input--style-6" type="text" formControlName="name" id="surname"
+                   placeholder="Enter surname here"/>
+            <div *ngIf="submitted && errorFiled.surname.errors">
+              <small *ngIf="errorFiled.surname.errors.required" class="error">Surname is required</small>
+              <small *ngIf="errorFiled.surname.errors.minlength" class="error">Surname must be at least 6
+                characters</small>
+            </div>
+          </div>
         </div>
-      </div>
 
-    </fieldset>
-    <button type="submit" class="p-button-raised p-button-rounded buttons"  pRipple>Register now</button>
-    <a routerLink="/login" class="link-button buttons"  pRipple>Back to login</a>
+        <div class="
+        form-row"><label class="name" for="email">Email</label>
+          <div class="value">
+            <input class="input--style-6" type="text" formControlName="email" id="email" tabindex="2"
+                   placeholder="Enter email here"/>
+            <div *ngIf="submitted && errorFiled.email.errors">
+              <small *ngIf="errorFiled.email.errors.required" class="error">Email is required</small>
+              <small *ngIf="errorFiled.email.errors.email" class="error">Enter valid email address</small>
+            </div>
+          </div>
+        </div>
 
-  </form>
+        <div class="form-row"><label class="name" for="dateOfBirth">Date Of Birth</label>
+          <div class="value">
+            <p-calendar formControlName="dateOfBirth" [inline]="false" [showIcon]="true" id="dateOfBirth"></p-calendar>
+            <div *ngIf="submitted && errorFiled.dateOfBirth.errors">
+              <small *ngIf="errorFiled.dateOfBirth.errors.required" class="error">Date of birth is required</small>
+            </div>
+          </div>
+        </div>
+        <div>
+
+
+          <fieldset>
+            <legend>
+              Login data:
+            </legend>
+
+
+            <div class="form-row"><label class="name" for="login">Login</label>
+              <div class="value">
+                <input class="input--style-6" type="text" formControlName="login" id="login" tabindex="2"
+                       placeholder="Enter login here"/>
+                <div *ngIf="submitted && errorFiled.login.errors">
+                  <small *ngIf="errorFiled.login.errors.required" class="error">Login is required</small>
+                  <small *ngIf="errorFiled.login.errors.minlength" class="error">Login must be at least 6
+                    characters</small>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-row"><label class="name" for="password">Password</label>
+              <div class="value">
+                <input class="input--style-6" type="password" id="password" formControlName="password" tabindex="2"
+                       placeholder="Enter login here"/>
+                <div *ngIf="submitted && errorFiled.password.errors">
+                  <small *ngIf="errorFiled.password.errors.required" class="error">Password is required</small>
+                  <small *ngIf="errorFiled.password.errors.minlength" class="error">Password must be at least 6
+                    characters</small>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+        </div>
+        <div class="card-footer">
+          <button class="btn btn--radius-2 " type="submit" pRipple>Register now</button>
+          <button class="btn btn--radius-2 " routerLink="/login" type="submit" pRipple>Back to login</button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
 </div>
 </body>
 
 <ng-template #userRegistered>
-  <div class="card">
+  <div class="card-success">
     <div class="success-template">
       <i class="checkmark">✓</i>
     </div>
@@ -83,6 +110,5 @@
     <p class="success-templateP">You were successfully registered!</p>
   </div>
 </ng-template>
-
 
 
