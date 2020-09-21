@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.primengConfig.ripple = true;
     this.loginForm = this.formBuilder.group({
-      userLogin: ['', Validators.required],
-      password: ['', Validators.required]
+      userLogin: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
   }
 

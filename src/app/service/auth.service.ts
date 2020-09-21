@@ -11,12 +11,12 @@ export class AuthService {
   temporaryUser: User = null;
 
   constructor(private userService: UserService) {
-    console.log(userService)
+
   }
 
 
-  login(userLogin: string, password: string): boolean {
-    this.userService.getByLogin(userLogin).subscribe(user => this.temporaryUser = user);
+  async login(userLogin: string, password: string): Promise<Promise<boolean> | boolean>{
+    await this.userService.getByLogin(userLogin).subscribe(user => this.temporaryUser = user);
     console.log(this.temporaryUser);
     if (this.temporaryUser.password === password) {
       this.loggedUser = this.temporaryUser;

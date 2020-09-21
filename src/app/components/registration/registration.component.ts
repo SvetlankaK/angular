@@ -18,8 +18,8 @@ export class RegistrationComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
-    private title: Title) {
-    this.title.setTitle("Registration");
+  ) {
+
   }
 
   registerForm: FormGroup;
@@ -31,9 +31,9 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
     this.dateOfBirth = new Date();
     this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required, Validators.minLength(5)],
-      surname: ['', Validators.required, Validators.minLength(5)],
-      dateOfBirth: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(5)]],
+      surname: ['', [Validators.required, Validators.minLength(5)]],
+      dateOfBirth: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       userLogin: ['', [Validators.required, Validators.minLength(6)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -52,11 +52,13 @@ export class RegistrationComponent implements OnInit {
       return;
     }
     console.log(this.registerForm.value);
-    this.userService.register(this.registerForm.value);
-    this.registered = true;
-    setTimeout(() => {
-      this.router.navigate(['/login'])
-    }, 3000);
+    if (this.registerForm.valid) {
+      this.userService.register(this.registerForm.value);
+      this.registered = true;
+      setTimeout(() => {
+        this.router.navigate(['/login'])
+      }, 3000);
+    }
   }
 
 }

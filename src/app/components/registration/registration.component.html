@@ -23,7 +23,7 @@
 
         <div class="form-row"><label class="name" for="surname">Surname</label>
           <div class="value">
-            <input class="input--style-6" type="text" formControlName="name" id="surname"
+            <input class="input--style-6" type="text" formControlName="surname" id="surname"
                    placeholder="Enter surname here"/>
             <div *ngIf="submitted && errorFiled.surname.errors">
               <small *ngIf="errorFiled.surname.errors.required" class="error">Surname is required</small>
@@ -91,7 +91,8 @@
 
         </div>
         <div class="card-footer">
-          <button class="btn btn--radius-2 " type="submit" pRipple>Register now</button>
+<!--//[disabled]="registerForm.invalid-->
+          <button class="btn btn--radius-2 "  type="submit" pRipple>Register now</button>
           <button class="btn btn--radius-2 " routerLink="/login" type="submit" pRipple>Back to login</button>
         </div>
 

@@ -27,10 +27,10 @@
         <td>
           <p-cellEditor>
             <ng-template pTemplate="input">
-              <p-listbox multiple="true" [options]="roles" [(ngModel)]="rowData.role"></p-listbox>
+              <p-listbox multiple="true" [options]="roles" [(ngModel)]="rowData.role.roleName "></p-listbox>
             </ng-template>
             <ng-template pTemplate="output">
-              {{rowData.role}}
+              {{rowData.role.roleName}}
             </ng-template>
           </p-cellEditor>
         </td>
