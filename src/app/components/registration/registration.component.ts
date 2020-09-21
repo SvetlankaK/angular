@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../../service/user.service";
+import {Title} from "@angular/platform-browser";
 
 
 @Component({
@@ -15,7 +16,9 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private userService: UserService) {
+    private userService: UserService,
+    private title: Title) {
+    this.title.setTitle("Registration");
   }
 
   registerForm: FormGroup;
@@ -31,7 +34,7 @@ export class RegistrationComponent implements OnInit {
       surname: ['', Validators.required, Validators.minLength(5)],
       dateOfBirth: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      login: ['', [Validators.required, Validators.minLength(6)]],
+      userLogin: ['', [Validators.required, Validators.minLength(6)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       salary: ["100"],
       id: [this.generateId()],

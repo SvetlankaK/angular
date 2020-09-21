@@ -14,8 +14,8 @@ export class AuthService {
   }
 
 
-  login(login: string, password: string): boolean {
-    const user = this.userService.getByLogin(login);
+  login(userLogin: string, password: string): boolean {
+    const user = this.userService.getByLogin(userLogin);
     if (user != null && user.password === password) {
       this.loggedUser = user;
       return true;
@@ -37,10 +37,6 @@ export class AuthService {
   }
 
   isAdmin(): boolean {
-    if (this.isLoggedIn() && this.loggedUser.role.filter(value => value === 'admin').length > 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.isLoggedIn() && this.loggedUser.role.filter(value => value === 'admin').length > 0;
   }
 }

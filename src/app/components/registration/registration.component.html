@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-      <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()" id="contactform">
+      <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit()" id="contactForm">
 
 
         <div class="form-row"><label class="name" for="name">Name</label>
@@ -47,7 +47,8 @@
 
         <div class="form-row"><label class="name" for="dateOfBirth">Date Of Birth</label>
           <div class="value">
-            <p-calendar formControlName="dateOfBirth" [inline]="false" [showIcon]="true" id="dateOfBirth"></p-calendar>
+            <p-calendar formControlName="dateOfBirth" [inline]="false" dateFormat="dd.mm.yy" dataType="string"
+                        [showIcon]="true" id="dateOfBirth"></p-calendar>
             <div *ngIf="submitted && errorFiled.dateOfBirth.errors">
               <small *ngIf="errorFiled.dateOfBirth.errors.required" class="error">Date of birth is required</small>
             </div>
@@ -64,11 +65,11 @@
 
             <div class="form-row"><label class="name" for="login">Login</label>
               <div class="value">
-                <input class="input--style-6" type="text" formControlName="login" id="login" tabindex="2"
+                <input class="input--style-6" type="text" formControlName="userLogin" id="login" tabindex="2"
                        placeholder="Enter login here"/>
-                <div *ngIf="submitted && errorFiled.login.errors">
-                  <small *ngIf="errorFiled.login.errors.required" class="error">Login is required</small>
-                  <small *ngIf="errorFiled.login.errors.minlength" class="error">Login must be at least 6
+                <div *ngIf="submitted && errorFiled.userLogin.errors">
+                  <small *ngIf="errorFiled.userLogin.errors.required" class="error">Login is required</small>
+                  <small *ngIf="errorFiled.userLogin.errors.minlength" class="error">Login must be at least 6
                     characters</small>
                 </div>
               </div>

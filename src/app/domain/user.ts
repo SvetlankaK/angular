@@ -1,15 +1,15 @@
 export class User {
-  login: string;
+  userLogin: string;
   password: string;
   name: string;
   surname: string;
   dateOfBirth: string;
   email: string;
-  id: number;
+  userId: number;
   salary: number;
   role: string[];
 
-  constructor(id: number, name: string, login: string, password: string, surname: string, dateOfBirth: string, email: string, salary: number, role: string[]) {
+  constructor(id: number, name: string, userLogin: string, password: string, surname: string, dateOfBirth: string, email: string, salary: number, role: string[]) {
   }
 
 }

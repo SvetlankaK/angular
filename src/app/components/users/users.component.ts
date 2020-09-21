@@ -37,23 +37,23 @@ export class UsersComponent implements OnInit {
   }
 
   onRowEditInit(user: User) {
-    this.clonedUsers[user.login] = {...user};
+    this.clonedUsers[user.userLogin] = {...user};
     console.log(this.clonedUsers);
   }
 
   onRowEditSave(user: User) {
-    delete this.clonedUsers[user.login];
+    delete this.clonedUsers[user.userLogin];
     this.service.update(user);
     this.loadUsers();
   }
 
   onRowEditCancel(user: User, index: number) {
-    this.users[index] = this.clonedUsers[user.login];
-    delete this.clonedUsers[user.login];
+    this.users[index] = this.clonedUsers[user.userLogin];
+    delete this.clonedUsers[user.userLogin];
   }
 
   delete(user: User) {
-    this.service.delete(user.id);
+    this.service.delete(user.userId);
     this.loadUsers();
   }
 }

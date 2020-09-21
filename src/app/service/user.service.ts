@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {User} from '../domain/user';
 
 @Injectable({
@@ -7,8 +7,8 @@ import {User} from '../domain/user';
 export class UserService {
 
   users: User[] = [{
-    id: 1,
-    login: 'kat',
+    userId: 1,
+    userLogin: 'kat',
     password: 'pass',
     email: 'cat1717@mail.ru',
     name: 'Анна',
@@ -16,8 +16,8 @@ export class UserService {
     role: ['user'],
     salary: 100
   }, {
-    id: 2,
-    login: 'leadss',
+    userId: 2,
+    userLogin: 'leadss',
     password: 'fdeefe',
     email: 'liveliver@gmail.com',
     name: 'Максим',
@@ -26,8 +26,8 @@ export class UserService {
     role: ['user'],
     salary: 100
   }, {
-    id: 3,
-    login: 'Sveta',
+    userId: 3,
+    userLogin: 'Sveta',
     password: 'gfhjkm',
     email: 'svetla@gmail.com',
     name: 'Света',
@@ -37,8 +37,8 @@ export class UserService {
     salary: 100
   },
     {
-      id: 4,
-      login: 'Max',
+      userId: 4,
+      userLogin: 'Max',
       password: 'qwe456',
       email: 'maksiik@gmail.com',
       name: 'Максим',
@@ -47,8 +47,8 @@ export class UserService {
       salary: 2000,
       role: ['user', 'admin'],
     }, {
-      id: 5,
-      login: 'gerald',
+      userId: 5,
+      userLogin: 'gerald',
       password: 'gddsssm',
       email: 'fiiklo@gmail.com',
       name: 'Грегорий',
@@ -57,8 +57,8 @@ export class UserService {
       role: ['user'],
       salary: 1222
     }, {
-      id: 6,
-      login: 'hello',
+      userId: 6,
+      userLogin: 'hello',
       password: 'world',
       email: 'sgas@gmail.com',
       name: 'Варя',
@@ -75,12 +75,12 @@ export class UserService {
     return this.users;
   }
 
-  getById(id: number) {
-    return this.users.find(user => user.id == id);
+  getById(userId: number) {
+    return this.users.find(user => user.userId == userId);
   }
 
-  getByLogin(login: string) {
-    return this.users.find(user => user.login == login);
+  getByLogin(userLogin: string) {
+    return this.users.find(user => user.userLogin == userLogin);
   }
 
   register(user: User) {
@@ -88,13 +88,13 @@ export class UserService {
   }
 
   update(user: User) {
-    let u = this.getById(user.id);
+    let u = this.getById(user.userId);
     let ind = this.users.indexOf(u);
     this.users[ind] = user;
   }
 
-  delete(id: number) {
-    this.users = this.users.filter(user => user.id !== id);
+  delete(userId: number) {
+    this.users = this.users.filter(user => user.userId !== userId);
   }
 
   generateId() {

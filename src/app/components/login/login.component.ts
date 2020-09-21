@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.primengConfig.ripple = true;
     this.loginForm = this.formBuilder.group({
-      login: ['', Validators.required],
+      userLogin: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -46,9 +46,9 @@ export class LoginComponent implements OnInit {
       return;
     }
     if (this.loginForm.valid) {
-      const login = this.loginForm.get('login').value;
+      const userLogin = this.loginForm.get('userLogin').value;
       const password = this.loginForm.get('password').value;
-      if (this.authService.login(login, password)) {
+      if (this.authService.login(userLogin, password)) {
         this.router.navigate(['welcome']);
       } else {
         this.invalidData = true;
