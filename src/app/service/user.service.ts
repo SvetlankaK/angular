@@ -1,103 +1,49 @@
 import {Injectable} from '@angular/core';
 import {User} from '../domain/user';
+import {HttpClient} from "@angular/common/http";
+import {Observable, Subscription} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  users: User[] = [{
-    userId: 1,
-    userLogin: 'kat',
-    password: 'pass',
-    email: 'cat1717@mail.ru',
-    name: 'Анна',
-    surname: 'Иванова', dateOfBirth: "11.11.1998",
-    role: ['user'],
-    salary: 100
-  }, {
-    userId: 2,
-    userLogin: 'leadss',
-    password: 'fdeefe',
-    email: 'liveliver@gmail.com',
-    name: 'Максим',
-    surname: 'Вешалкин',
-    dateOfBirth: "11.05.1995",
-    role: ['user'],
-    salary: 100
-  }, {
-    userId: 3,
-    userLogin: 'Sveta',
-    password: 'gfhjkm',
-    email: 'svetla@gmail.com',
-    name: 'Света',
-    surname: 'Кветко',
-    dateOfBirth: '04.06.2000',
-    role: ['user', 'admin'],
-    salary: 100
-  },
-    {
-      userId: 4,
-      userLogin: 'Max',
-      password: 'qwe456',
-      email: 'maksiik@gmail.com',
-      name: 'Максим',
-      surname: 'Ворошилов',
-      dateOfBirth: '17.02.1998',
-      salary: 2000,
-      role: ['user', 'admin'],
-    }, {
-      userId: 5,
-      userLogin: 'gerald',
-      password: 'gddsssm',
-      email: 'fiiklo@gmail.com',
-      name: 'Грегорий',
-      surname: 'Навицкий',
-      dateOfBirth: '17.05.1992',
-      role: ['user'],
-      salary: 1222
-    }, {
-      userId: 6,
-      userLogin: 'hello',
-      password: 'world',
-      email: 'sgas@gmail.com',
-      name: 'Варя',
-      surname: 'Фоминова',
-      dateOfBirth: '11.01.1990',
-      role: ['user'],
-      salary: 1999
-    }];
+  users: User[];
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   findAll(): User[] {
+    this.http.get<User[]>(`http://localhost:8090/users`).subscribe(data => this.users = data);
+    console.log(this.users);
     return this.users;
+    // subscribe((data: User[]) => {
+    //     this.users = data;
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   });
   }
 
-  getById(userId: number) {
-    return this.users.find(user => user.userId == userId);
+  getById(userId: number): Observable<User> {
+    return this.http.get<User>(`http://localhost:8090/users/${userId}`);
   }
 
-  getByLogin(userLogin: string) {
-    return this.users.find(user => user.userLogin == userLogin);
+  getByLogin(userLogin: string): Observable<User> {
+    return this.http.get<User>(`http://localhost:8090/?userLogin=${userLogin}`);
   }
 
-  register(user: User) {
-    return this.users.push(user);
+  register(user: User): Observable<User> {
+    return this.http.post<User>(`http://localhost:8090/users/`, user);
   }
 
-  update(user: User) {
-    let u = this.getById(user.userId);
-    let ind = this.users.indexOf(u);
-    this.users[ind] = user;
+  update(user: User): Observable<User> {
+    let id = user.userId;
+    return this.http.put<User>(`http://localhost:8090/users/${id}`, user);
   }
 
-  delete(userId: number) {
-    this.users = this.users.filter(user => user.userId !== userId);
+  delete(userId: number): Observable<User> {
+    return this.http.delete<User>(`http://localhost:8090/users/${userId}`);
   }
 
-  generateId() {
-    return this.users.length + 1;
-  }
 }

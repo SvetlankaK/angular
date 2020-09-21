@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../../service/user.service";
 import {Title} from "@angular/platform-browser";
+import {Role} from "../../domain/role";
 
 
 @Component({
@@ -37,8 +38,7 @@ export class RegistrationComponent implements OnInit {
       userLogin: ['', [Validators.required, Validators.minLength(6)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       salary: ["100"],
-      id: [this.generateId()],
-      role: ['user']
+      role: [new Role("user", 1)]
     });
   }
 
@@ -59,8 +59,4 @@ export class RegistrationComponent implements OnInit {
     }, 3000);
   }
 
-
-  generateId() {
-    return this.userService.generateId();
-  }
 }

@@ -1,32 +1,32 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {LoginComponent} from './components/login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { RegistrationComponent } from './components/registration/registration.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
-import { UsersComponent } from './components/users/users.component';
+import {RegistrationComponent} from './components/registration/registration.component';
+import {WelcomeComponent} from './components/welcome/welcome.component';
+import {UsersComponent} from './components/users/users.component';
 import {TableModule} from 'primeng/table';
 import {RouterModule} from "@angular/router";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
 import {CalendarModule} from 'primeng/calendar';
 import {ButtonModule} from 'primeng/button';
 import {TabViewModule} from "primeng/tabview";
 import {InputTextModule} from "primeng/inputtext";
-import { ErrorComponent } from './components/error/error.component';
+import {ErrorComponent} from './components/error/error.component';
 import {RippleModule} from "primeng/ripple";
 import {ProgressSpinnerModule} from "primeng/progressspinner";
 import {DropdownModule} from 'primeng/dropdown';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {ListboxModule} from 'primeng/listbox';
-import { LogoutComponent } from './components/logout/logout.component';
+import {LogoutComponent} from './components/logout/logout.component';
 import {ContentComponent} from './components/content/content.component';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
-
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -59,10 +59,12 @@ import {FooterComponent} from './components/footer/footer.component';
     ProgressSpinnerModule,
     DropdownModule,
     MultiSelectModule,
-    ListboxModule
+    ListboxModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
 

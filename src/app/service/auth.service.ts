@@ -8,6 +8,7 @@ import {UserService} from './user.service';
 export class AuthService {
 
   loggedUser: User = null;
+  temporaryUser: User = null;
 
   constructor(private userService: UserService) {
     console.log(userService)
@@ -15,9 +16,10 @@ export class AuthService {
 
 
   login(userLogin: string, password: string): boolean {
-    const user = this.userService.getByLogin(userLogin);
-    if (user != null && user.password === password) {
-      this.loggedUser = user;
+    this.userService.getByLogin(userLogin).subscribe(user => this.temporaryUser = user);
+    console.log(this.temporaryUser);
+    if (this.temporaryUser.password === password) {
+      this.loggedUser = this.temporaryUser;
       return true;
     } else {
       return false;
@@ -37,6 +39,6 @@ export class AuthService {
   }
 
   isAdmin(): boolean {
-    return this.isLoggedIn() && this.loggedUser.role.filter(value => value === 'admin').length > 0;
+    return this.isLoggedIn() && this.loggedUser.role.filter(value => value.roleName === 'admin').length > 0;
   }
 }

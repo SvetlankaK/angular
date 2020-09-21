@@ -3,6 +3,7 @@ import {User} from '../../domain/user';
 import {UserService} from '../../service/user.service';
 import {AppComponent} from '../../app.component';
 import {SelectItem} from 'primeng/api';
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-users',
@@ -15,7 +16,7 @@ export class UsersComponent implements OnInit {
   constructor(private service: UserService) {
   }
 
-  users: User[];
+  users:User[];
   roles: SelectItem[];
   clonedUsers: { [s: string]: User; } = {};
   wait = false;
