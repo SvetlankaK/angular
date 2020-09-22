@@ -22,5 +22,4 @@ export class AppComponent {
     return !(this.route.url.includes('login') || this.route.url.includes('registration') || this.route.url.includes('error'));
   }
 
-
 }
