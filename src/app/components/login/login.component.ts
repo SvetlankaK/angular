@@ -48,11 +48,13 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const userLogin = this.loginForm.get('userLogin').value;
       const password = this.loginForm.get('password').value;
-      if (this.authService.login(userLogin, password)) {
-        this.router.navigate(['welcome']);
-      } else {
-        this.invalidData = true;
-      }
+      this.authService.login(userLogin, password).subscribe(result => {
+        if (result) {
+          this.router.navigate(['welcome']);
+        } else {
+          this.invalidData = true;
+        }
+      });
     }
   }
 
