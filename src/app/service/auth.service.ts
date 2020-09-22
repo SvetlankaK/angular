@@ -28,22 +28,6 @@ export class AuthService {
     ));
   }
 
-  // login(userLogin: string, password: string): boolean {
-  //   let p = new Promise<User>((resolve, reject) => {
-  //     this.userService.getByLogin(userLogin).subscribe(data => {
-  //       resolve(data);
-  //       console.log(data+"before check pass")
-  //     });
-  //   }).then(data => this.temporaryUser = data).then(data => {
-  //     if (this.temporaryUser.password === password) {
-  //       this.loggedUser = this.temporaryUser;
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   });
-  //   return false;
-  // }
   logout(): void {
     this.loggedUser = null;
   }
@@ -57,6 +41,6 @@ export class AuthService {
   }
 
   isAdmin(): boolean {
-    return this.isLoggedIn() && this.loggedUser.role.filter(value => value.roleName === 'admin').length > 0;
+    return this.isLoggedIn() && this.loggedUser.role.filter(value =>value.roleName === 'admin').length > 0;
   }
 }
