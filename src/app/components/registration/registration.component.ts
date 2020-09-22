@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../../service/user.service";
-import {Title} from "@angular/platform-browser";
 import {Role} from "../../domain/role";
 
 
@@ -38,7 +37,7 @@ export class RegistrationComponent implements OnInit {
       userLogin: ['', [Validators.required, Validators.minLength(6)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       salary: ["100"],
-      role: [new Role("user", 1)]
+      role: [new Role('user', 1)]
     });
   }
 
@@ -51,9 +50,9 @@ export class RegistrationComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    console.log(this.registerForm.value);
     if (this.registerForm.valid) {
       this.userService.register(this.registerForm.value);
+      console.log(this.registerForm.value);
       this.registered = true;
       setTimeout(() => {
         this.router.navigate(['/login'])

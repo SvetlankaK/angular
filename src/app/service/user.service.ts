@@ -21,15 +21,17 @@ export class UserService {
   }
 
   getByLogin(userLogin: string): Observable<User> {
-    return this.http.get<User>(`http://localhost:8090/?userLogin=${userLogin}`);
+    return this.http.get<User>(`http://localhost:8090/users/login/${userLogin}`);
   }
 
   register(user: User): Observable<User> {
+    console.log(this.http.post<User>(`http://localhost:8090/users/`, user));
     return this.http.post<User>(`http://localhost:8090/users/`, user);
   }
 
   update(user: User): Observable<User> {
     let id = user.userId;
+    console.log(this.http.put<User>(`http://localhost:8090/users/${id}`, user));
     return this.http.put<User>(`http://localhost:8090/users/${id}`, user);
   }
 
