@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {User} from '../domain/user';
 import {UserService} from './user.service';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 
 @Injectable({
@@ -9,23 +11,21 @@ import {UserService} from './user.service';
 export class AuthService {
 
   loggedUser: User = null;
-  temporaryUser: User = null;
 
 
   constructor(private userService: UserService) {
   }
 
-  login(userLogin: string, password: string): boolean {
-    this.userService.getByLogin(userLogin).subscribe(user => this.temporaryUser = user, error => {
-      console.log(error)
-    });
-    console.log(this.temporaryUser);
-    if (this.temporaryUser.password === password) {
-      this.loggedUser = this.temporaryUser;
-      return true;
-    } else {
-      return false;
+  login(userLogin: string, password: string): Observable<boolean> {
+    return this.userService.getByLogin(userLogin).pipe(map(user => {
+        console.log(user);
+        this.loggedUser = user;
+        if (user.userLogin === userLogin && user.password === password) {
+          return true;
+        }
+        return false;
     }
+    ));
   }
 
   // login(userLogin: string, password: string): boolean {
