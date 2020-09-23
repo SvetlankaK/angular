@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {NgModule, Provider} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -26,9 +26,14 @@ import {LogoutComponent} from './components/logout/logout.component';
 import {ContentComponent} from './components/content/content.component';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+// import {AuthInterceptor} from "./service/auth.interceptor";
 
-
+// const INTERCEPTOR_PROVIDER: Provider = {
+//   provide: HTTP_INTERCEPTORS,
+//   multi: true,
+//   useClass: AuthInterceptor
+// }
 @NgModule({
   declarations: [
     AppComponent,

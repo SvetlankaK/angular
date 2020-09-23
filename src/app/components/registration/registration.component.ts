@@ -36,7 +36,7 @@ export class RegistrationComponent implements OnInit {
       userLogin: ['', [Validators.required, Validators.minLength(6)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       salary: ['100']
-    });
+    })
   }
 
   get errorFiled() {

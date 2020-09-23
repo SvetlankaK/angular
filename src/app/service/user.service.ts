@@ -33,8 +33,8 @@ export class UserService {
     return this.http.put<User>(`http://localhost:8090/users/${id}`, user);
   }
 
-  delete(userId: number): Observable<User> {
-    return this.http.delete<User>(`http://localhost:8090/users/${userId}`);
+  delete(userId: number): Observable<void> {
+    return this.http.delete<void>(`http://localhost:8090/users/${userId}`);
   }
 
 }
