@@ -10,6 +10,7 @@ export class User {
   userId: number;
   salary: number;
   role: Role[];
+  roleValues?: string[];
 
   constructor(id: number, name: string, userLogin: string, password: string, surname: string, dateOfBirth: string, email: string, salary: number, role: Role[]) {
   }

@@ -41,6 +41,6 @@ export class AuthService {
   }
 
   isAdmin(): boolean {
-    return this.isLoggedIn() && this.loggedUser.role.filter(value =>value.roleName === 'admin').length > 0;
+    return this.isLoggedIn() && this.loggedUser.role.filter(value => value.roleName === 'admin').length > 0;
   }
 }

@@ -3,6 +3,8 @@ import {User} from '../../domain/user';
 import {UserService} from '../../service/user.service';
 import {AppComponent} from '../../app.component';
 import {SelectItem} from 'primeng/api';
+import {RoleService} from '../../service/role.service';
+import {Role} from '../../domain/role';
 
 @Component({
   selector: 'app-users',
@@ -12,39 +14,52 @@ import {SelectItem} from 'primeng/api';
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private service: UserService) {
+  constructor(private userService: UserService, private roleService: RoleService) {
   }
 
   users: User[];
-  roles: SelectItem[];
+  rolesOptions: SelectItem[] = [];
+  allRoles: Role[];
   clonedUsers: { [s: string]: User; } = {};
   wait = false;
 
   ngOnInit(): void {
-    this.roles = [{
-      label: 'User',
-      value: 'user'
-    },
-      {
-        label: 'Admin',
-        value: 'admin'
-      }];
+    this.roleService.findAll().subscribe(
+      value => {
+        this.allRoles = value;
+        value.forEach(role => {
+          this.rolesOptions.push({
+            value: role.roleName,
+            label: role.roleName
+          });
+        });
+      }
+    );
     this.loadUsers();
   }
 
   loadUsers(): void {
-    this.service.findAll().subscribe(data => this.users = data);
+    this.userService.findAll().subscribe(data => {
+      data.forEach(user => {
+        user.roleValues = [];
+        user.role.forEach(role =>
+          user.roleValues.push(role.roleName)
+        );
+      });
+      this.users = data;
+    });
   }
 
   onRowEditInit(user: User) {
     this.clonedUsers[user.userLogin] = {...user};
-    console.log(this.clonedUsers);
   }
 
   onRowEditSave(user: User) {
     delete this.clonedUsers[user.userLogin];
-    this.service.update(user);
-    this.loadUsers();
+    user.role = this.allRoles.filter(role => user.roleValues.includes(role.roleName));
+    this.userService.update(user).subscribe(
+      value => this.loadUsers()
+    );
   }
 
   onRowEditCancel(user: User, index: number) {
@@ -53,7 +68,8 @@ export class UsersComponent implements OnInit {
   }
 
   delete(user: User) {
-    this.service.delete(user.userId);
-    this.loadUsers();
+    this.userService.delete(user.userId).subscribe(
+      value => this.loadUsers()
+    );
   }
 }
