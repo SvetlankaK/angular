@@ -4,7 +4,6 @@ import {UserService} from './user.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {Role} from '../domain/role';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ToastrService} from "ngx-toastr";
 import {PrimeNGConfig} from "primeng/api";
 import {AuthService} from '../../service/auth.service';
 
@@ -24,18 +23,10 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private toastr: ToastrService,
     private primengConfig: PrimeNGConfig) {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe((params: Params) => {
-      if (params['loginAgain']) {
-        this.message = 'Пожалуйста, введите данные'
-      } else if (params['authFailed']) {
-        this.message = 'Сессия истекла. Введите данные заного'
-      }
-    })
     this.primengConfig.ripple = true;
     this.loginForm = this.formBuilder.group({
       userLogin: ['', [Validators.required]],

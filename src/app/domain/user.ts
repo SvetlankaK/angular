@@ -11,7 +11,6 @@ export class User {
   salary?: number;
   role: Role[];
   roleValues?: string[];
-  token?: string;
 
   constructor(id: number, name: string, userLogin: string,  role: Role[]) {
   }

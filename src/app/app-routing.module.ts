@@ -18,7 +18,6 @@ const routes: Routes = [
   {path: 'welcome', component: WelcomeComponent, canActivate: [AuthorizedGuard]},
   {path: 'users', component: UsersComponent, canActivate: [AuthorizedGuard, AdminGuard]},
   {path: 'error/:type', component: ErrorComponent},
-  // {path: '/', redirectTo: 'login'},
   {path: '**', redirectTo: 'error/404'}
 ];
 export const routing = RouterModule.forRoot(routes);
