@@ -25,7 +25,7 @@ export class UserService {
   }
 
   register(user: User): Observable<User> {
-    return this.http.post<User>(`http://localhost:8090/users/`, user);
+    return this.http.post<User>(`http://localhost:8090/register/`, user);
   }
 
   update(user: User): Observable<User> {

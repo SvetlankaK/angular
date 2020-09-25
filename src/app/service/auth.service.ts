@@ -22,15 +22,16 @@ export class AuthService {
 
   login(userLogin: string, password: string): Observable<boolean> {
     return this.http.post<any>(`http://localhost:8090/api/auth/signin`, {password, userLogin}).pipe(map(resp => {
-        if (resp.userLogin === userLogin && resp.password === password) {
-          localStorage.setItem('token', resp.token);
-          this.loggedUser.role = resp.roles;
-          this.loggedUser.userLogin = resp.userLogin;
-          return true;
-        }
-        return false;
+        localStorage.setItem('token', resp.token);
+        console.log(resp)
+        this.loggedUser.role = [];
+        this.loggedUser.role = [{roleName: resp.role}];
+        this.loggedUser.userLogin = resp.userLogin;
+        this.loggedUser.name = resp.name;
+        console.log(this.loggedUser)
+        return true;
       }
-    ));
+    ))
   }
 
   logout(): void {
