@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {User} from '../domain/user';
 import {UserService} from './user.service';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {Role} from "../domain/role";
+import {Role} from '../domain/role';
 
 @Injectable({
   providedIn: 'root'
@@ -18,29 +18,18 @@ export class AuthService {
   }
 
   get token(): string {
-    return localStorage.getItem('token')
+    return localStorage.getItem('token');
   }
 
   login(userLogin: string, password: string): Observable<boolean> {
     return this.http.post<any>(`http://localhost:8090/api/auth/signin`, {password, userLogin}).pipe(map(resp => {
-        localStorage.setItem('token', resp.token);
+        localStorage.setItem('token', resp.accessToken);
         console.log(resp);
-        let roles: Role[];
-        for (let i = 0; i < resp.roles.length; i++) {
-          switch (resp.roles[i]) {
-            case resp.roles[i] === "admin":
-              roles.push({roleName: "admin", id: 2})
-              break;
-            case resp.roles[i] === "user":
-              roles.push({roleName: "user", id: 1})
-              break;
-          }
-        }
-        this.loggedUser = new User(resp.id, resp.name, resp.userLogin, roles);
-        console.log(this.loggedUser)
+        this.loggedUser = {userId: resp.id, name: resp.name, userLogin: resp.userLogin, role: resp.roles};
+        console.log(this.loggedUser);
         return true;
       }
-    ))
+    ));
   }
 
   logout(): void {
@@ -49,7 +38,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return (localStorage.getItem('token') !== null);
+    return this.loggedUser && (localStorage.getItem('token') !== null);
   }
 
   isAdmin(): boolean {
