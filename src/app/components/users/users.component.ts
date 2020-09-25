@@ -21,7 +21,7 @@ export class UsersComponent implements OnInit {
   rolesOptions: SelectItem[] = [];
   allRoles: Role[];
   clonedUsers: { [s: string]: User; } = {};
-  wait = false;
+
 
   ngOnInit(): void {
     this.roleService.findAll().subscribe(

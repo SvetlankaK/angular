@@ -27,13 +27,13 @@ import {ContentComponent} from './components/content/content.component';
 import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-// import {AuthInterceptor} from "./service/auth.interceptor";
+import {AuthInterceptor} from "./service/auth.interceptor";
 
-// const INTERCEPTOR_PROVIDER: Provider = {
-//   provide: HTTP_INTERCEPTORS,
-//   multi: true,
-//   useClass: AuthInterceptor
-// }
+const INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AuthInterceptor
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +67,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
     ListboxModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule {

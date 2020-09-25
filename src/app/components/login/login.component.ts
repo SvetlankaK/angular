@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ToastrService} from "ngx-toastr";
 import {PrimeNGConfig} from "primeng/api";
@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   invalidData = false;
   id: string;
+  message: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,6 +29,13 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params['loginAgain']) {
+        this.message = 'Пожалуйста, введите данные'
+      } else if (params['authFailed']) {
+        this.message = 'Сессия истекла. Введите данные заного'
+      }
+    })
     this.primengConfig.ripple = true;
     this.loginForm = this.formBuilder.group({
       userLogin: ['', [Validators.required]],
