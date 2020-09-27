@@ -23,9 +23,7 @@ export class AuthService {
   login(userLogin: string, password: string): Observable<boolean> {
     return this.http.post<any>(`http://localhost:8090/api/auth/signin`, {password, userLogin}).pipe(map(resp => {
         localStorage.setItem('token', resp.accessToken);
-        console.log(resp);
         this.loggedUser = {userId: resp.id, name: resp.name, userLogin: resp.userLogin, role: resp.roles};
-        console.log(this.loggedUser);
         return true;
       }
     ));

@@ -13,6 +13,7 @@ import {AdminGuard} from './service/admin.guard';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'login/:error', component: LoginComponent},
   {path: 'logout', component: LogoutComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'welcome', component: WelcomeComponent, canActivate: [AuthorizedGuard]},

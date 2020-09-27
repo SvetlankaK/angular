@@ -28,6 +28,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.primengConfig.ripple = true;
+    this.route.params.subscribe(
+      value => {
+        if (value.error) {
+          this.invalidData = true;
+        }
+      }
+    );
     this.loginForm = this.formBuilder.group({
       userLogin: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -48,11 +55,7 @@ export class LoginComponent implements OnInit {
       const userLogin = this.loginForm.get('userLogin').value;
       const password = this.loginForm.get('password').value;
       this.authService.login(userLogin, password).subscribe(result => {
-        if (result) {
-          this.router.navigate(['welcome']);
-        } else {
-          this.invalidData = true;
-        }
+        this.router.navigate(['welcome']);
       });
     }
   }

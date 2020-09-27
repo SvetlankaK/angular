@@ -13,7 +13,7 @@ export class UserService {
   }
 
   findAll(): Observable<User[]> {
-    return this.http.get<User[]>(`http://localhost:8090/users`).pipe();
+    return this.http.get<User[]>(`http://localhost:8090/users`);
   }
 
   getById(userId: number): Observable<User> {

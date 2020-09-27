@@ -50,12 +50,12 @@ export class RegistrationComponent implements OnInit {
     }
     if (this.registerForm.valid) {
       const user: User = this.registerForm.value;
-      user.role = [];
-      user.role.push({roleName: 'user', id: 1});
       this.userService.register(user).subscribe(
         value => {
           this.registered = true;
-          this.router.navigate(['/login']);
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 3000);
         }
       );
     }
