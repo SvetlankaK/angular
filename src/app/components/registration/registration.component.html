@@ -17,6 +17,9 @@
             <div *ngIf="submitted && errorFiled.name.errors">
               <small *ngIf="errorFiled.name.errors.required" class="error">Name is required</small>
               <small *ngIf="errorFiled.name.errors.minlength" class="error">Name must be at least 6 characters</small>
+              <small *ngIf="errorFiled.name.errors.maxlength" class="error">Name must be shorter, delete at least
+                {{registerForm.get('name').errors.maxlength.actualLength - registerForm.get('name').errors.maxlength.requiredLength }}
+                characters</small>
             </div>
           </div>
         </div>
@@ -28,6 +31,9 @@
             <div *ngIf="submitted && errorFiled.surname.errors">
               <small *ngIf="errorFiled.surname.errors.required" class="error">Surname is required</small>
               <small *ngIf="errorFiled.surname.errors.minlength" class="error">Surname must be at least 6
+                characters</small>
+              <small *ngIf="errorFiled.surname.errors.maxlength" class="error">Surname must be shorter, delete at least
+                {{registerForm.get('surname').errors.maxlength.actualLength - registerForm.get('surname').errors.maxlength.requiredLength }}
                 characters</small>
             </div>
           </div>
@@ -71,6 +77,10 @@
                   <small *ngIf="errorFiled.userLogin.errors.required" class="error">Login is required</small>
                   <small *ngIf="errorFiled.userLogin.errors.minlength" class="error">Login must be at least 6
                     characters</small>
+                  <small *ngIf="errorFiled.userLogin.errors.maxlength" class="error">Login must be shorter, delete at
+                    least
+                    {{registerForm.get('userLogin').errors.maxlength.actualLength - registerForm.get('userLogin').errors.maxlength.requiredLength }}
+                    characters</small>
                   <small *ngIf="errorFiled.userLogin.errors.uniqueLogin" class="error">
                     Login {{registerForm.get('userLogin').value}} is already taken
                   </small>
@@ -86,6 +96,10 @@
                 <div *ngIf="submitted && errorFiled.password.errors">
                   <small *ngIf="errorFiled.password.errors.required" class="error">Password is required</small>
                   <small *ngIf="errorFiled.password.errors.minlength" class="error">Password must be at least 6
+                    characters</small>
+                  <small *ngIf="errorFiled.password.errors.maxlength" class="error">Password must be shorter, delete at
+                    least
+                    {{registerForm.get('password').errors.maxlength.actualLength - registerForm.get('password').errors.maxlength.requiredLength }}
                     characters</small>
                 </div>
               </div>

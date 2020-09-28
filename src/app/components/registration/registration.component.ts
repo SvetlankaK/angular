@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../../service/user.service";
 import {User} from '../../domain/user';
 import {MyValidator} from "../../service/validator/my.validator";
-
-
 
 
 @Component({
@@ -20,7 +18,7 @@ export class RegistrationComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
-    private validator:MyValidator) {
+    private validator: MyValidator) {
 
   }
 
@@ -33,12 +31,12 @@ export class RegistrationComponent implements OnInit {
   ngOnInit() {
     this.dateOfBirth = new Date();
     this.registerForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(5)]],
-      surname: ['', [Validators.required, Validators.minLength(5)]],
+      name: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]),
+      surname: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       dateOfBirth: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      userLogin: ['', [Validators.required, Validators.minLength(6)],[this.validator.uniqueLogin]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      userLogin: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)], [this.validator.uniqueLogin]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
       salary: ['100']
     })
   }
