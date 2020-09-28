@@ -71,6 +71,9 @@
                   <small *ngIf="errorFiled.userLogin.errors.required" class="error">Login is required</small>
                   <small *ngIf="errorFiled.userLogin.errors.minlength" class="error">Login must be at least 6
                     characters</small>
+                  <small *ngIf="errorFiled.userLogin.errors.uniqueLogin" class="error">
+                    Login {{registerForm.get('userLogin').value}} is already taken
+                  </small>
                 </div>
               </div>
             </div>
@@ -92,7 +95,7 @@
         </div>
         <div class="card-footer">
 
-          <button class="btn btn--radius-2 "  type="submit" pRipple>Register now</button>
+          <button class="btn btn--radius-2 " type="submit" pRipple>Register now</button>
           <button class="btn btn--radius-2 " routerLink="/login" type="submit" pRipple>Back to login</button>
         </div>
 

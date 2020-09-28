@@ -37,4 +37,7 @@ export class UserService {
     return this.http.delete<void>(`http://localhost:8090/users/${userId}`);
   }
 
+  checkLoginIsUnique(userLogin: string): Observable<boolean> {
+    return this.http.get<boolean>(`http://localhost:8090//check/login/${userLogin}`);
+  }
 }
