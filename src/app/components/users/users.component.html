@@ -1,81 +1,88 @@
 <div class="card">
-  <p-table [value]="users" [scrollable]="true" scrollHeight="350px" dataKey="id" editMode="row"
-           styleClass="p-datatable-responsive-demo" >
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Name,Surname</th>
-        <th>Role</th>
-        <th>Email</th>
-        <th>Salary</th>
-        <th>Birthday</th>
-        <th style="width:10em"></th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
-      <tr [pEditableRow]="rowData">
-        <td>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="rowData.name" required [ngStyle]="{'width':'100%'}">
-              <input pInputText type="text" [(ngModel)]="rowData.surname" required [ngStyle]="{'width':'100%'}">
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{rowData.name}}, {{rowData.surname}}
-            </ng-template>
-          </p-cellEditor>
-        </td>
-        <td>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <p-listbox multiple="true" [options]="rolesOptions" [(ngModel)]="rowData.roleValues"></p-listbox>
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{rowData.roleValues}}
-            </ng-template>
-          </p-cellEditor>
-        </td>
-        <td>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="rowData.email" required [ngStyle]="{'width':'100%'}">
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{rowData.email}}
-            </ng-template>
-          </p-cellEditor>
-        </td>
-        <td>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="rowData.salary" required [ngStyle]="{'width':'100%'}">
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{rowData.salary}}
-            </ng-template>
-          </p-cellEditor>
-        </td>
-        <td>
-          <p-cellEditor>
-            <ng-template pTemplate="input">
-              <input pInputText type="text" [(ngModel)]="rowData.dateOfBirth" required [ngStyle]="{'width':'100%'}">
-            </ng-template>
-            <ng-template pTemplate="output">
-              {{rowData.dateOfBirth}}
-            </ng-template>
-          </p-cellEditor>
-        </td>
-        <td style="text-align:center">
-          <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info"
-                  (click)="onRowEditInit(rowData)"></button>
-          <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success"
-                  style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
-          <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger"
-                  (click)="onRowEditCancel(rowData,ri)"></button>
-          <button *ngIf="!editing" pButton type="button" icon="pi pi-times" class="ui-button-danger delete-button"
-                  (click)="delete(rowData)"></button>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
-
+  <form [formGroup]="userTable">
+    <p-table [value]="users" [scrollable]="true" scrollHeight="350px" dataKey="id" editMode="row"
+             styleClass="p-datatable-responsive-demo">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Name,Surname</th>
+          <th>Role</th>
+          <th>Email</th>
+          <th>Salary</th>
+          <th>Birthday</th>
+          <th style="width:10em"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+        <tr [pEditableRow]="rowData">
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="rowData.name" formControlName="name"
+                       [ngStyle]="{'width':'100%'}">
+                <input pInputText type="text" [(ngModel)]="rowData.surname" formControlName="surname"
+                       [ngStyle]="{'width':'100%'}">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{rowData.name}}, {{rowData.surname}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <p-listbox multiple="true" [options]="rolesOptions" [(ngModel)]="rowData.roleValues"></p-listbox>
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{rowData.roleValues}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="rowData.email" formControlName="email"
+                       [ngStyle]="{'width':'100%'}">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{rowData.email}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="rowData.salary" formControlName="salary"
+                       [ngStyle]="{'width':'100%'}">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{rowData.salary}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td>
+            <p-cellEditor>
+              <ng-template pTemplate="input">
+                <input pInputText type="text" [(ngModel)]="rowData.dateOfBirth" formControlName="birthday"
+                       [ngStyle]="{'width':'100%'}">
+              </ng-template>
+              <ng-template pTemplate="output">
+                {{rowData.dateOfBirth}}
+              </ng-template>
+            </p-cellEditor>
+          </td>
+          <td style="text-align:center">
+            <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info"
+                    (click)="onRowEditInit(rowData)"></button>
+            <button *ngIf="editing" pButton type="button" [disabled]="userTable.invalid" pSaveEditableRow
+                    icon="pi pi-check" class="ui-button-success"
+                    style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+            <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger"
+                    (click)="onRowEditCancel(rowData,ri)"></button>
+            <button *ngIf="!editing" pButton type="button" icon="pi pi-times" class="ui-button-danger delete-button"
+                    (click)="delete(rowData)"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </form>
 </div>

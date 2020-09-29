@@ -5,6 +5,7 @@ import {AppComponent} from '../../app.component';
 import {SelectItem} from 'primeng/api';
 import {RoleService} from '../../service/role.service';
 import {Role} from '../../domain/role';
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-users',
@@ -14,13 +15,14 @@ import {Role} from '../../domain/role';
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private userService: UserService, private roleService: RoleService) {
+  constructor(private userService: UserService, private roleService: RoleService, private fb: FormBuilder) {
   }
 
   users: User[];
   rolesOptions: SelectItem[] = [];
   allRoles: Role[];
   clonedUsers: { [s: string]: User; } = {};
+  userTable: FormGroup;
 
 
   ngOnInit(): void {
@@ -38,6 +40,22 @@ export class UsersComponent implements OnInit {
     this.loadUsers();
   }
 
+
+  initiateForm(): FormGroup {
+    return this.fb.group({
+      name: ['', Validators.required, Validators.maxLength(20)],
+      surname: ['', [Validators.required, Validators.maxLength(20)]],
+      email: ['', [Validators.required, Validators.email,]],
+      salary: ['', [Validators.required, Validators.maxLength(10)]],
+      birthday: ['', [Validators.required]]
+    });
+  }
+
+  get getFormControls() {
+    const control = this.userTable.get('tableRows') as FormArray;
+    return control;
+  }
+
   loadUsers(): void {
     this.userService.findAll().subscribe(data => {
       data.forEach(user => {
@@ -52,6 +70,7 @@ export class UsersComponent implements OnInit {
 
   onRowEditInit(user: User) {
     this.clonedUsers[user.userLogin] = {...user};
+    this.initiateForm()
   }
 
   onRowEditSave(user: User) {
