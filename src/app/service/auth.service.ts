@@ -29,7 +29,7 @@ export class AuthService {
       }
     ));
   }
-  //мабыть пюре сухое, масочки, два средства для ебала, тб(?)
+
 
   logout(): void {
     localStorage.removeItem('token');

@@ -1,12 +1,13 @@
-import {FormControl} from "@angular/forms";
+import {FormControl, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 import {UserService} from "../user.service";
 
 @Injectable({providedIn: 'root'})
-export class MyValidator {
+export class MyValidator extends Validators{
 
   constructor(private userService: UserService) {
+    super();
   }
 
   uniqueLogin(control: FormControl): Promise<any> | Observable<any> {

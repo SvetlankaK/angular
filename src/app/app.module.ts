@@ -28,6 +28,8 @@ import {HeaderComponent} from './components/header/header.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./service/auth.interceptor";
+import {UserService} from "./service/user.service";
+
 
 
 const INTERCEPTOR_PROVIDER: Provider = {
