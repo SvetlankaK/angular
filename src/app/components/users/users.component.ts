@@ -5,7 +5,7 @@ import {AppComponent} from '../../app.component';
 import {SelectItem} from 'primeng/api';
 import {RoleService} from '../../service/role.service';
 import {Role} from '../../domain/role';
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-users',
@@ -22,7 +22,7 @@ export class UsersComponent implements OnInit {
   rolesOptions: SelectItem[] = [];
   allRoles: Role[];
   clonedUsers: { [s: string]: User; } = {};
-  userTable: FormGroup;
+  // userTable: FormGroup;
 
 
   ngOnInit(): void {
@@ -41,20 +41,20 @@ export class UsersComponent implements OnInit {
   }
 
 
-  initiateForm(): FormGroup {
-    return this.fb.group({
-      name: ['', Validators.required, Validators.maxLength(20)],
-      surname: ['', [Validators.required, Validators.maxLength(20)]],
-      email: ['', [Validators.required, Validators.email,]],
-      salary: ['', [Validators.required, Validators.maxLength(10)]],
-      birthday: ['', [Validators.required]]
-    });
-  }
-
-  get getFormControls() {
-    const control = this.userTable.get('tableRows') as FormArray;
-    return control;
-  }
+  // initiateForm(): FormGroup {
+  //   return this.fb.group({
+  //     name: ['', Validators.required, Validators.maxLength(20)],
+  //     surname: ['', [Validators.required, Validators.maxLength(20)]],
+  //     email: ['', [Validators.required, Validators.email,]],
+  //     salary: ['', [Validators.required, Validators.maxLength(10)]],
+  //     birthday: ['', [Validators.required]]
+  //   });
+  // }
+  //
+  // get getFormControls() {
+  //   const control = this.userTable.get('tableRows') as FormArray;
+  //   return control;
+  // }
 
   loadUsers(): void {
     this.userService.findAll().subscribe(data => {
@@ -70,7 +70,6 @@ export class UsersComponent implements OnInit {
 
   onRowEditInit(user: User) {
     this.clonedUsers[user.userLogin] = {...user};
-    this.initiateForm()
   }
 
   onRowEditSave(user: User) {
