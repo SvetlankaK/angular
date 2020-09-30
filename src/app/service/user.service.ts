@@ -38,6 +38,6 @@ export class UserService {
   }
 
   checkLoginIsUnique(userLogin: string): Observable<boolean> {
-    return this.http.get<boolean>(`http://localhost:8090//check/login/${userLogin}`);
+    return this.http.get<boolean>(`http://localhost:8090/check/login/${userLogin}`);
   }
 }

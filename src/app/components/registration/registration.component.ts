@@ -3,7 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../../service/user.service";
 import {User} from '../../domain/user';
-
+import {MyValidator} from "../../service/validator/my.validator";
 
 
 @Component({
@@ -34,7 +34,7 @@ export class RegistrationComponent implements OnInit {
       surname: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       dateOfBirth: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      userLogin: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+      userLogin: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)], [()=>(MyValidator.uniqueLogin(this.formBuilder.control("userLogin"), this.userService))]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
       salary: ['100']
     })
